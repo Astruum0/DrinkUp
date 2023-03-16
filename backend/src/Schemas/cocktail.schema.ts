@@ -7,6 +7,9 @@ export type CocktailDocument = HydratedDocument<Cocktail>;
 @Schema()
 export class Cocktail {
   @Prop()
+  id: string;
+
+  @Prop()
   name: string;
 
   @Prop()

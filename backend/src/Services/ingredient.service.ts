@@ -10,9 +10,9 @@ export class IngredientsService {
     private ingredientModel: Model<IngredientDocument>,
   ) {}
 
-  async create(): Promise<Ingredient> {
-    const createdCat = new this.ingredientModel();
-    return createdCat.save();
+  async create(ingredient: Ingredient): Promise<Ingredient> {
+    const createdIngredient = new this.ingredientModel(ingredient);
+    return createdIngredient.save();
   }
 
   async findAll(): Promise<Ingredient[]> {
