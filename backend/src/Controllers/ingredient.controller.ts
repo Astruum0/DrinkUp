@@ -1,4 +1,4 @@
-import { Ingredient } from 'src/schemas/ingredient.schema';
+import { Ingredient } from 'src/Schemas/ingredient.schema';
 import { CreateIngredientDto } from './../Dto/create-ingredient.dto';
 import { Controller, Get, Post, Param, Delete, Body } from '@nestjs/common';
 import { IngredientsService } from 'src/Services/ingredient.service';

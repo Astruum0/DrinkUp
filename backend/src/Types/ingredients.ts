@@ -1,4 +1,4 @@
-import { Ingredient } from 'src/schemas/ingredient.schema';
+import { Ingredient } from 'src/Schemas/ingredient.schema';
 
 export type Ingredients = {
   ingredient: Ingredient;
