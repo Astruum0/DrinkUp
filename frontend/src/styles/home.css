@@ -1,0 +1,44 @@
+.text-pannel {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-flow: column;
+    width: 40%;
+    padding-right: 30px;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    text-align: start;
+}
+
+.text-pannel * {
+    margin: 10px;
+}
+
+.carousel {
+    width: 60%;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row;
+
+}
+.carousel img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 5px;
+    transition: all 1s ease-in-out;
+    
+}
+.not-current {
+    width: 20%;
+}
+.current {
+    width: 50%;
+}
