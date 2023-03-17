@@ -1,0 +1,26 @@
+.navbar {
+    height: 80px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-flow: row;
+    padding: 0 50px;
+}
+
+.selected {
+    color: var(--main-color);
+}
+
+.logo {
+    margin: 10px;
+    margin-right: auto;
+}
+
+.navbar a {
+    margin: 10px;
+}
+
+.logo img{
+    width: 150px;
+}
+
