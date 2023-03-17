@@ -1,16 +1,21 @@
+import { IngredientsService } from 'src/Services/ingredient.service';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Cocktail, CocktailSchema } from 'src/schemas/Cocktail.schema';
+import { Cocktail, CocktailSchema } from 'src/Schemas/Cocktail.schema';
 import { CocktailsService } from 'src/Services/cocktail.service';
 import { CocktailsController } from '../Controllers/cocktail.controller';
+import { Ingredient, IngredientSchema } from 'src/Schemas/ingredient.schema';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: Cocktail.name, schema: CocktailSchema },
     ]),
+    MongooseModule.forFeature([
+      { name: Ingredient.name, schema: IngredientSchema },
+    ]),
   ],
   controllers: [CocktailsController],
-  providers: [CocktailsService],
+  providers: [CocktailsService, IngredientsService],
 })
 export class CocktailsModule {}

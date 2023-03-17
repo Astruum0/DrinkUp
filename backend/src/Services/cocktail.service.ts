@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Cocktail, CocktailDocument } from '../schemas/Cocktail.schema';
+import { Cocktail, CocktailDocument } from '../Schemas/Cocktail.schema';
 
 @Injectable()
 export class CocktailsService {
