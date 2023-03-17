@@ -6,7 +6,9 @@ import { Controller, Get, Post, Param, Delete, Body } from '@nestjs/common';
 import { CocktailsService } from 'src/Services/cocktail.service';
 import { IngredientsService } from 'src/Services/ingredient.service';
 import { Ingredient } from 'src/Schemas/ingredient.schema';
+import { ApiTags, ApiCreatedResponse } from '@nestjs/swagger';
 
+@ApiTags('Cocktails')
 @Controller('cocktails')
 export class CocktailsController {
   constructor(
@@ -15,6 +17,10 @@ export class CocktailsController {
   ) {}
 
   @Post('/create')
+  @ApiCreatedResponse({
+    description: 'The record has been successfully created.',
+    type: CreateCocktailDto,
+  })
   async create(@Body() createCocktailDto: CreateCocktailDto) {
     const allQueries: Promise<Ingredient>[] = [];
     const allIngredients: CocktailIngredient[] = [];
