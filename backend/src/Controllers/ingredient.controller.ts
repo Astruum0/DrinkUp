@@ -38,7 +38,7 @@ export class IngredientsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `This action returns a #${id} cat`;
+    return this.ingredientService.findOne(id);
   }
 
   @Delete(':id')

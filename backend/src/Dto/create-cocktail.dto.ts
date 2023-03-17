@@ -1,10 +1,8 @@
-import { Ingredients } from 'src/Types/ingredients';
-
 export class CreateCocktailDto {
   id: string;
   name: string;
   picture: string;
-  ingredients: Ingredients[];
+  cocktailIngredients: [{ ingredient: string; quantity: string }];
   description: string;
   ratingsNb: number;
   rating: number;
