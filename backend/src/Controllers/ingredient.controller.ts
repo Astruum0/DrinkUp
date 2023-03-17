@@ -3,12 +3,18 @@ import { CreateIngredientDto } from './../Dto/create-ingredient.dto';
 import { Controller, Get, Post, Param, Delete, Body } from '@nestjs/common';
 import { IngredientsService } from 'src/Services/ingredient.service';
 import { randomUUID } from 'crypto';
+import { ApiTags, ApiCreatedResponse } from '@nestjs/swagger';
 
+@ApiTags('Ingredients')
 @Controller('ingredients')
 export class IngredientsController {
   constructor(private readonly ingredientService: IngredientsService) {}
 
   @Post('/create')
+  @ApiCreatedResponse({
+    description: 'The record has been successfully created.',
+    type: CreateIngredientDto,
+  })
   create(@Body() createIngredientDto: CreateIngredientDto) {
     const ingredient: Ingredient = {
       id: randomUUID(),

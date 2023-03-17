@@ -16,6 +16,9 @@ import { CocktailsService } from 'src/Services/cocktail.service';
 import { diskStorage } from 'multer';
 import { FileInterceptor } from '@nestjs/platform-express';
 import path = require('path');
+import { IngredientsService } from 'src/Services/ingredient.service';
+import { Ingredient } from 'src/Schemas/ingredient.schema';
+import { ApiTags, ApiCreatedResponse } from '@nestjs/swagger';
 
 const storage = {
   storage: diskStorage({
@@ -28,9 +31,8 @@ const storage = {
     }
   })
 }
-import { IngredientsService } from 'src/Services/ingredient.service';
-import { Ingredient } from 'src/Schemas/ingredient.schema';
 
+@ApiTags('Cocktails')
 @Controller('cocktails')
 export class CocktailsController {
   constructor(
