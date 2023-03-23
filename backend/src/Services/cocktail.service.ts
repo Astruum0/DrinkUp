@@ -18,4 +18,8 @@ export class CocktailsService {
   async findAll(): Promise<Cocktail[]> {
     return this.cocktailModel.find().exec();
   }
+
+  async findOne(id: string): Promise<Cocktail> {
+    return this.cocktailModel.findOne({ id: id }).exec();
+  }
 }
