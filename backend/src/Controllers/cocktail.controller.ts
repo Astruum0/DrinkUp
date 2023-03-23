@@ -6,7 +6,7 @@ import { Controller, Get, Post, Param, Delete, Body } from '@nestjs/common';
 import { CocktailsService } from 'src/Services/cocktail.service';
 import { IngredientsService } from 'src/Services/ingredient.service';
 import { Ingredient } from 'src/Schemas/ingredient.schema';
-import { ApiTags, ApiCreatedResponse } from '@nestjs/swagger';
+import { ApiTags, ApiCreatedResponse, ApiResponse } from '@nestjs/swagger';
 
 @ApiTags('Cocktails')
 @Controller('cocktails')
@@ -18,7 +18,8 @@ export class CocktailsController {
 
   @Post('/create')
   @ApiCreatedResponse({
-    description: 'The record has been successfully created.',
+    status: 201,
+    description: 'The cocktail has been successfully created.',
     type: CreateCocktailDto,
   })
   async create(@Body() createCocktailDto: CreateCocktailDto) {
@@ -63,17 +64,32 @@ export class CocktailsController {
   }
 
   @Get()
+  @ApiResponse({
+    status: 200,
+    description: 'Returns all the cocktails',
+    type: [Cocktail],
+  })
   findAll() {
     return this.cocktailService.findAll();
   }
 
   @Get(':id')
+  @ApiResponse({
+    status: 200,
+    description: 'Returns the given cocktail',
+    type: Cocktail,
+  })
   findOne(@Param('id') id: string) {
-    return `This action returns a #${id} cat`;
+    return this.cocktailService.findOne(id);
   }
 
   @Delete(':id')
+  @ApiResponse({
+    status: 200,
+    description: 'Deletes the given cocktail',
+    type: String,
+  })
   remove(@Param('id') id: string) {
-    return `This action removes a #${id} cat`;
+    return `This action removes a #${id} cocktail`;
   }
 }

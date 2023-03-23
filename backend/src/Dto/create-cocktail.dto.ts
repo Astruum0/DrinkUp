@@ -11,18 +11,8 @@ export class CreateCocktailDto {
   picture: string;
 
   @ApiProperty({
-    type: 'array',
-    items: {
-      type: 'Object',
-      properties: {
-        ingredient: {
-          type: 'string',
-        },
-        quantity: {
-          type: 'string',
-        },
-      },
-    },
+    isArray: true,
+    type: '{ ingredient: string; quantity: string }',
   })
   cocktailIngredients: [{ ingredient: string; quantity: string }];
 
