@@ -3,7 +3,7 @@ import { UsersModule } from "./users.module"
 import { PassportModule } from "@nestjs/passport"
 import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from "@nestjs/mongoose"
-import { UserSchema } from "src/Models/users.model";
+import { UserSchema } from "src/Schemas/users.schema";
 import { LocalStrategy } from "src/local.auth";
 import { UsersService } from "src/Services/users.service";
 import { AuthService } from "src/Services/auth.service";
