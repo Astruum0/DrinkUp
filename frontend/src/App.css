@@ -2,6 +2,7 @@
     background-color: var(--background-color);
     color: white;
     text-align: center;
+    align-items: center;
     display: flex;
     justify-content: flex-start;
     flex-flow: column;
@@ -15,6 +16,7 @@
     border: solid 1px var(--main-color);
     border-radius: 50px;
     transition: all 0.15s ease-in-out;
+    background-color: var(--background-color);
 }
 
 .btn:hover {
@@ -25,4 +27,8 @@
 .btn-filled {
     background-color: var(--main-color);
     color: var(--background-color);
+}
+.btn-filled:hover {
+    color: white;
+    cursor: pointer;
 }
