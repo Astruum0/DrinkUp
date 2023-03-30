@@ -1,6 +1,7 @@
 import ArticleIcon from '@mui/icons-material/Send'
 import CameraAltIcon from '@mui/icons-material/Send'
 import SendIcon from '@mui/icons-material/Send'
+import Navbar from './components/Navbar/Navbar'
 import './App.css'
 
 import Card from './components/Card/Card'
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar/>
       <section className="card-container">
         <Card
           body='Cocktail de boisson alcoolisé pour pa'
