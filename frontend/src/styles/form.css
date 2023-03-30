@@ -22,7 +22,7 @@
     margin: 2px;
 }
 
-.create-cocktail input {
+.create-cocktail input[type='text'] {
     font-family: "Poppins";
     width: calc(100% - 16px);
     height: 30px;
@@ -48,4 +48,47 @@
 }
 .create-btn {
     width: 100%
+}
+
+.list-ingredients {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.ingredient {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    padding: 2px 8px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    margin-right: 5px;
+}
+.icon {
+    margin-left: 5px;
+}
+.icon:hover {
+    color: var(--main-color);
+    cursor: pointer;
+}
+.image-input {
+    width: calc(100% - 20px);
+}
+#file {
+    display:none
+}
+
+.cocktail-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 2px black;
+    filter: drop-shadow(2px 2px 2px black);
 }
