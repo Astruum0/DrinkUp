@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Ingredient } from 'src/schemas/ingredient.schema';
+import { Ingredient } from 'src/Schemas/ingredient.schema';
 
 export class CocktailIngredient {
   @ApiProperty()

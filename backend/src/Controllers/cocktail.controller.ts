@@ -1,12 +1,13 @@
 import { CocktailIngredient } from 'src/Types/cocktailIngredient';
 import { randomUUID } from 'crypto';
-import { Cocktail } from './../Schemas/cocktail.schema';
+import { Cocktail } from '../Schemas/cocktail.schema';
 import { CreateCocktailDto } from './../Dto/create-cocktail.dto';
 import { Controller, Get, Post, Param, Delete, Body } from '@nestjs/common';
 import { CocktailsService } from 'src/Services/cocktail.service';
 import { IngredientsService } from 'src/Services/ingredient.service';
 import { Ingredient } from 'src/Schemas/ingredient.schema';
 import { ApiTags, ApiCreatedResponse, ApiResponse } from '@nestjs/swagger';
+import { ingredientsListDto } from 'src/Dto/ingredients-list.dto';
 
 @ApiTags('Cocktails')
 @Controller('cocktails')
@@ -60,6 +61,39 @@ export class CocktailsController {
               : 'Error',
         };
       }
+    });
+  }
+
+  @Post('/create-cocktail')
+  @ApiCreatedResponse({
+    status: 201,
+    description:
+      'Return two lists of cocktails that can be made from the list of ingredients supplied',
+    type: CreateCocktailDto,
+  })
+  async create_cocktail(@Body() ingredientsList: ingredientsListDto) {
+    this.cocktailService.findAll().then((data) => {
+      const partially_doable = [];
+      const doable = [];
+      let ingredient_name: string;
+      let percentage: number;
+      for (let i = 0; i < data.length; i++) {
+        const cocktail = data[i];
+        let completion = 0;
+        for (let j = 0; j < cocktail.ingredients.length; j++) {
+          ingredient_name = cocktail.ingredients[j].ingredient.name;
+          if (ingredientsList.ingredients.includes(ingredient_name)) {
+            completion += 1;
+          }
+        }
+        percentage = completion / cocktail.ingredients.length;
+        if (percentage == 1) {
+          doable.push(cocktail);
+        } else if (percentage >= 0.5) {
+          partially_doable.push(cocktail);
+        }
+      }
+      console.log(doable, partially_doable);
     });
   }
 
