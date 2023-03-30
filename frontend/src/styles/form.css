@@ -1,0 +1,51 @@
+.create-cocktail {
+    width: 70%;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.create-cocktail * {
+    margin: 5px 0;
+}
+
+.add-ingredient {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+}
+.add-ingredient * {
+    margin: 2px;
+}
+
+.create-cocktail input {
+    font-family: "Poppins";
+    width: calc(100% - 16px);
+    height: 30px;
+    border: 4px solid white;
+    border-radius: 10px;
+}
+
+.create-cocktail textarea {
+    font-family: "Poppins";
+    width: calc(100% - 16px);
+    border: 4px solid white;
+    border-radius: 10px;
+    max-width: calc(100% - 16px);
+    min-width: calc(100% - 16px);
+}
+
+.create-cocktail button {
+    font-size: 15px;
+    height: 38px;
+}
+.add-ingredient-btn {
+    min-width: 38px;
+}
+.create-btn {
+    width: 100%
+}
