@@ -8,8 +8,8 @@
     line-height: var(--lh-1);
     text-decoration: none;
     cursor: pointer;
-    padding: 0.5em 1em;
-    border-width: 0.1em;
+    padding: .5em 1em;
+    border-width: .1em;
     border-style: solid;
     border-color: var(--type);
     border-radius: var(--round-sm);
@@ -17,29 +17,31 @@
     background-color: var(--fill);
     color: var(--type);
     max-width: max-content;
-}
-
-.btn svg {
+  }
+  
+  .btn svg {
     height: var(--fs-300);
-}
-
-.btn:focus {
+  }
+  
+  .btn:focus {
     outline: none;
-}
-
-.btn:is(:hover, :focus-visible) {
-    box-shadow: 0 0 0 3px hsl(var(--bkg)), 0 0 0 6px var(--type);
-}
-
-.primary {
+  }
+  
+  .btn:is(:hover, :focus-visible){
+    box-shadow:
+      0 0 0 3px hsl(var(--bkg)),
+      0 0 0 6px var(--type);
+  }
+  
+  .primary {
     --type: hsl(var(--accent));
-}
-
-.secondary {
+  }
+  
+  .secondary {
     --type: hsl(var(--accent2));
-}
-
-.filled {
+  }
+  
+  .filled {
     --fill: var(--type);
     color: hsl(var(--bkg));
-}
+  }
