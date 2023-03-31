@@ -41,6 +41,11 @@ export class CocktailsController {
   ) {}
 
   @Post('/create')
+  @ApiCreatedResponse({
+    status: 201,
+    description: 'The cocktail has been successfully created.',
+    type: CreateCocktailDto,
+  })
   async create(@Body() createCocktailDto: CreateCocktailDto) {
     const allQueries: Promise<Ingredient>[] = [];
     const recipe: CocktailIngredient[] = [];
