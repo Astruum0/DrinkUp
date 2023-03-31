@@ -23,7 +23,7 @@ import { ApiTags, ApiCreatedResponse, ApiResponse } from '@nestjs/swagger';
 const storage = {
   storage: diskStorage({
     destination: './uploads/cocktails',
-    filename: (req, file, cb) => {
+    filename: (_, file, cb) => {
       const filename: string = path.parse(file.originalname).name
       const extension: string = path.parse(file.originalname).ext;
 
@@ -88,7 +88,6 @@ export class CocktailsController {
   @UseInterceptors(
     FileInterceptor('file', storage))
   upload(@UploadedFile() file) {
-    console.log("hello",file);
     return {"file": file.filename}
   }
 

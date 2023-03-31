@@ -1,7 +1,11 @@
-import { log } from "console";
 import { ICocktail } from "../models";
 
 export const createCocktail = async (cocktail: ICocktail) => {
+    const recipe = cocktail.ingredients
+    recipe.forEach((i) => {
+        if (i.id) i.ingredient = i.id
+    })
+    
     try {
         let res = await fetch(`${process.env.REACT_APP_API_URL}/cocktails/create`, {
             method: "POST",
@@ -10,7 +14,7 @@ export const createCocktail = async (cocktail: ICocktail) => {
               },
             body: JSON.stringify({
                 name: cocktail.title,
-                cocktailIngredients: cocktail.ingredients,
+                cocktailIngredients: recipe,
                 description: cocktail.description
             })
         })

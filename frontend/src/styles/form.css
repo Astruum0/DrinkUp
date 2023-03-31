@@ -18,7 +18,7 @@
     align-items: center;
     flex-flow: row;
 }
-.add-ingredient * {
+.add-ingredient input {
     margin: 2px;
 }
 
@@ -91,4 +91,41 @@
     border-radius: 20px;
     box-shadow: 2px black;
     filter: drop-shadow(2px 2px 2px black);
+}
+
+.dropdown {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+.dropdown input {
+    z-index: 1000;
+}
+.dropdown-options {
+    display: block;
+    position: absolute;
+    overflow: auto;
+    margin-top: -11px;
+    margin-left: 2px;
+    width: calc(100% - 4px);
+    z-index: 1;
+    background-color: white;
+    color: var(--background-color);
+    border-radius: 0 0 10px 10px;
+    filter: drop-shadow(2px 2px 1px black);
+}
+
+.dropdown-options div {
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.dropdown-options div:hover {
+    background: darkgray;
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
 }

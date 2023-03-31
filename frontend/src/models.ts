@@ -6,6 +6,11 @@ export interface ICocktail {
 }
 
 export interface IRecipe {
+    id: string,
     ingredient: string,
     quantity: string,
+}
+export interface IIngredient {
+    id: string,
+    name: string
 }
