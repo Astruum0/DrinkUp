@@ -24,7 +24,7 @@ const storage = {
   storage: diskStorage({
     destination: './uploads/cocktails',
     filename: (req, file, cb) => {
-      const filename: string = path.parse(file.originalname).name.replace(/\s/g, '') + randomUUID();
+      const filename: string = path.parse(file.originalname).name
       const extension: string = path.parse(file.originalname).ext;
 
       cb(null, `${filename}${extension}`)
@@ -41,71 +41,55 @@ export class CocktailsController {
   ) {}
 
   @Post('/create')
-  // @UseInterceptors(
-  //   FileInterceptor('file', storage))
-  // create(@UploadedFile() file) {
-  //   console.log("hello",file);
-  //   return {"file": file.filename}
-    // const cocktail: Cocktail = {
-    //   id: randomUUID(),
-    //   name: createCocktailDto.name,
-    //   picture: file.filename,
-    //   ingredients: createCocktailDto.ingredients,
-    //   description: createCocktailDto.description,
-    //   ratingsNb: null,
-    //   rating: null,
-    // };
-    // try {
-    //   return this.cocktailService.create(cocktail);
-    // } catch (e: unknown) {
-    //   return {
-    //     error:
-    //       typeof e === 'string'
-    //         ? e.toUpperCase()
-    //         : e instanceof Error
-    //         ? e.message
-    //         : 'Error',
-    //   };
-    // }
   async create(@Body() createCocktailDto: CreateCocktailDto) {
     const allQueries: Promise<Ingredient>[] = [];
-    const allIngredients: CocktailIngredient[] = [];
+    const recipe: CocktailIngredient[] = [];
 
     createCocktailDto.cocktailIngredients.forEach((ingredient) => {
       allQueries.push(this.ingredientService.findOne(ingredient.ingredient));
     });
 
-    Promise.all(allQueries).then((ingredientObject) => {
-      createCocktailDto.cocktailIngredients.forEach((ingredient, i) => {
-        allIngredients.push({
-          ingredient: ingredientObject[i],
-          quantity: ingredient.quantity,
-        });
-      }) as unknown as CocktailIngredient[];
-
-      const cocktail: Cocktail = {
-        id: randomUUID(),
-        name: createCocktailDto.name,
-        picture: createCocktailDto.picture,
-        ingredients: allIngredients,
-        description: createCocktailDto.description,
-        ratingsNb: null,
-        rating: null,
-      };
-
-      try {
-        this.cocktailService.create(cocktail);
-      } catch (e: unknown) {
-        return {
-          error:
-            typeof e === 'string'
-              ? e.toUpperCase()
-              : e instanceof Error
-              ? e.message
-              : 'Error',
-        };
+    const queryResults = await Promise.all(allQueries)
+    for (let i = 0; i < createCocktailDto.cocktailIngredients.length; i++) {
+      let ingredient = queryResults[i]
+      if (!ingredient) {
+        ingredient = await this.ingredientService.newIngredient(createCocktailDto.cocktailIngredients[i].ingredient) 
       }
-    });
+      const quantity = createCocktailDto.cocktailIngredients[i].quantity
+      recipe.push({ ingredient, quantity })
+    }
+
+    const cocktailID = randomUUID()
+    const cocktail: Cocktail = {
+      id: cocktailID,
+      name: createCocktailDto.name,
+      picture: cocktailID,
+      ingredients: recipe,
+      description: createCocktailDto.description,
+      ratingsNb: null,
+      rating: null,
+    };
+
+    try {
+      return this.cocktailService.create(cocktail);
+    } catch (e: unknown) {
+      return {
+        error:
+          typeof e === 'string'
+            ? e.toUpperCase()
+            : e instanceof Error
+            ? e.message
+            : 'Error',
+      };
+    }
+  }
+
+  @Post('/upload')
+  @UseInterceptors(
+    FileInterceptor('file', storage))
+  upload(@UploadedFile() file) {
+    console.log("hello",file);
+    return {"file": file.filename}
   }
 
   @Get()
