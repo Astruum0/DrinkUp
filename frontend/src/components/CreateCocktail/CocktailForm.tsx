@@ -2,26 +2,18 @@ import { useEffect, useState } from "react";
 import "../../styles/form.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-
-interface CocktailFormData {
-  title: string,
-  description: string,
-  ingredients: Recipe[],
-  picture: File | undefined,
-}
-interface Recipe {
-  ingredient: string,
-  quantity: string,
-}
+import { ICocktail, IRecipe } from "../../models";
+import { createCocktail } from "../../api/createCocktail";
+import { alignProperty } from "@mui/material/styles/cssUtils";
 
 function CocktailForm() {
-  const initialState: CocktailFormData = {
+  const initialState: ICocktail = {
     title: "",
     description: "",
     ingredients: [],
     picture: undefined
   };
-  const emptyRecipe: Recipe = {
+  const emptyRecipe: IRecipe = {
     ingredient: "",
     quantity: "",
   }
@@ -47,9 +39,6 @@ function CocktailForm() {
     setValues({...values, ingredients: values.ingredients.filter((_, i) => i !== index)})
   }
 
-  const onSubmit = () => {
-    console.log(values);
-  }
   const onChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
@@ -58,6 +47,15 @@ function CocktailForm() {
     if (event.target.files && event.target.files?.length > 0) {
       setImage(event.target.files?.item(0) as File)
       setValues({...values, picture: event.target.files?.item(0) as File})
+    }
+  }
+
+  const onSubmit = () => {
+    try {
+      const res = createCocktail(values)
+      console.log(res)
+    } catch(err) {
+      console.log(err);
     }
   }
 
