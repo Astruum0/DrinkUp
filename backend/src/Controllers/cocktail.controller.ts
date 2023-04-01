@@ -106,6 +106,16 @@ export class CocktailsController {
     return this.cocktailService.findAll();
   }
 
+  @Get('/trending')
+  @ApiResponse({
+    status: 200,
+    description: 'Returns all the cocktails sorted by popularity',
+    type: [Cocktail],
+  })
+  async trending() {
+    return (await this.cocktailService.findAll()).sort((c1, c2) => (c2.rating/c2.ratingsNb) - (c1.rating/c1.ratingsNb))
+  }
+
   @Get(':id')
   @ApiResponse({
     status: 200,
