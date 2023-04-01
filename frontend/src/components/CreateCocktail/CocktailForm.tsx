@@ -5,6 +5,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { ICocktail, IIngredient, IRecipe } from "../../models";
 import { createCocktail } from "../../api/createCocktail";
 import { getAllIngredients } from "../../api/getAllIngredients";
+import { useApi } from "../../api/useApi";
 
 function CocktailForm() {
   let allIngredients: IIngredient[] = []
@@ -26,15 +27,15 @@ function CocktailForm() {
   const [imageUrl, setImageUrl] = useState<string>();
   const [autoCompleteIngredients, setAutoCompleteIngredients] = useState<IIngredient[]>([])
   const [showAutoComplete, setShowAutoComplete] = useState(false)
+  const ingredientState = useApi(`${process.env.REACT_APP_API_URL}/ingredients`)
 
   useEffect(() => {
     if (image) setImageUrl(URL.createObjectURL(image))
   }, [image])
 
   useEffect(() => {
-    getAllIngredients().then((res) => {
-      if (res) allIngredients = res
-    })
+    if (ingredientState.error) console.error(ingredientState.error)
+    else allIngredients = ingredientState.data
   })
 
   const updateAutoCompletion = (field: string) => {
