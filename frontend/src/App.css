@@ -1,29 +1,11 @@
-  .App {
-    background-color: var(--background-color);
-    color: white;
-    text-align: center;
+.App {
+    display: grid;
+    place-items: center;
+  }
+  
+  .card-container {
     display: flex;
-    justify-content: flex-start;
-    flex-flow: column;
-    height: 100vh;
-    padding: 0 80px;
-}
-
-.btn {
-    padding: 6px 10px;
-    color: var(--main-color);
-    border: solid 1px var(--main-color);
-    border-radius: 50px;
-    transition: all 0.15s ease-in-out;
-}
-
-.btn:hover {
-    background-color: var(--main-color);
-    color: var(--background-color);
-}
-
-.btn-filled {
-    background-color: var(--main-color);
-    color: var(--background-color);
-}
-
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
