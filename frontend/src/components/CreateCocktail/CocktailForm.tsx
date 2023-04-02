@@ -11,7 +11,7 @@ function CocktailForm() {
   let allIngredients: IIngredient[] = []
 
   const initialState: ICocktail = {
-    title: "",
+    name: "",
     description: "",
     ingredients: [],
     picture: undefined
@@ -107,8 +107,8 @@ function CocktailForm() {
     <div className="create-cocktail">
       <h1>Créer un cocktail</h1>
       <input
-          name='title'
-          id='title'
+          name='name'
+          id='name'
           type='text'
           placeholder='Titre'
           onChange={onChange}

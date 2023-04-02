@@ -1,3 +1,11 @@
+.home-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    width: 100%;
+}
+
 .text-pannel {
     display: flex;
     justify-content: center;
@@ -41,4 +49,77 @@
 }
 .current {
     width: 50%;
+}
+
+.filled-link {
+    color: var(--main-color);
+}
+.filled-link:hover {
+    text-decoration: underline;
+}
+.cocktails-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.cocktails-list {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding-right: 0;
+}
+
+.cocktail-preview-card {
+    border-radius: 20px;
+    width: 27%;
+    min-width: 200px;
+    box-shadow: 2px 2px 2px black;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 20px;
+}
+.cocktail-preview-card h3 {
+    margin-top: 40px;
+}
+
+.cocktail-image-preview {
+    background-color: gray;
+    width: calc(100% + 40px);
+    height: 200px;
+    border-radius: 20px 20px 0 0;
+    margin: -20px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.rating {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row;
+    height: 50px;
+    color: yellow;
+}
+.rating p {
+    font-weight: bold;
+    color: darkgray;
+    margin-bottom: 13px;
+    margin-right: 5px;
+}
+.rating span {
+    color: gray;
+    font-style: italic;
 }

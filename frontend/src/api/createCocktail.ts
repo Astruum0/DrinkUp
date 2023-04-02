@@ -13,7 +13,7 @@ export const createCocktail = async (cocktail: ICocktail) => {
                 "Content-Type": "application/json",
               },
             body: JSON.stringify({
-                name: cocktail.title,
+                name: cocktail.name,
                 cocktailIngredients: recipe,
                 description: cocktail.description
             })
@@ -21,7 +21,7 @@ export const createCocktail = async (cocktail: ICocktail) => {
         let resJson = await res.json()
         const cocktailId = resJson["id"]
         if (!cocktailId) throw new Error("An error occured while creating the cocktail")
-        if (cocktail.picture) {
+        if (cocktail.picture && typeof cocktail.picture !== "string") {
             const fileExt = cocktail.picture.name.split(".").at(-1)
 
             const formData = new FormData();
