@@ -22,7 +22,7 @@ const CocktailPreviewCard = ({cocktail}: {cocktail: ICocktail}) => {
 
     return (
         <div className="cocktail-preview-card">
-            <div className="cocktail-image-preview"></div>
+            <img className="cocktail-image-preview" src={`${process.env.REACT_APP_API_URL}/images/get?id=${cocktail.id}`}></img>
             <h3>{cocktail.name}</h3>
             <div className="card-footer">
                 <div className="rating">
