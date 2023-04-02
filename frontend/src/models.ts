@@ -1,8 +1,11 @@
 export interface ICocktail {
-    title: string,
+    id?: string
+    name: string,
     description: string,
     ingredients: IRecipe[],
-    picture: File | undefined,
+    picture: File | string |undefined,
+    rating?: number
+    ratingsNb?: number
 }
 
 export interface IRecipe {
