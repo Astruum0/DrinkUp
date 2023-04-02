@@ -49,8 +49,8 @@ export class CocktailsController {
       picture: cocktailID,
       ingredients: recipe,
       description: createCocktailDto.description,
-      ratingsNb: null,
-      rating: null,
+      ratingsNb: 0,
+      rating: 0,
     };
 
     try {

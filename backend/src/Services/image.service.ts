@@ -1,13 +1,8 @@
-import { diskStorage } from 'multer';
 import {
   Injectable,
   Query,
   Res,
-  UploadedFile,
-  UseInterceptors,
 } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
-import path = require('path');
 
 @Injectable()
 export class ImageService {
@@ -15,6 +10,7 @@ export class ImageService {
     const extensions = ['.png', '.jpg', '.jpeg', '.gif'];
 
     extensions.forEach((extension) => {
+      try {
       res.sendFile(
         `${query.id + extension}`,
         {
@@ -26,6 +22,9 @@ export class ImageService {
           }
         },
       );
+      } catch(err) {
+        console.log(err);
+      }
     });
   }
 }
