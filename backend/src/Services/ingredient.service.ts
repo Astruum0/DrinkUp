@@ -23,8 +23,8 @@ export class IngredientsService {
       name: name,
       picture: undefined,
       type: undefined,
-    }
-    return this.create(ingredient)
+    };
+    return this.create(ingredient);
   }
 
   async findAll(): Promise<Ingredient[]> {
