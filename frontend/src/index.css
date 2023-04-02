@@ -17,7 +17,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
-    background-color: hsl(var(--bkg));
+    background-color: hsl(var(--background-color));
     color: hsl(var(--text));
 }
 
@@ -45,8 +45,8 @@ a:hover {
 :root {
 
 
-  /* colors */
-  --bkg: 248 80% 98%;
+  /*colors*/
+  --bkg: black; 
   --muted: 248 15.7% 80%;
   --text: 246 76% 4.9%;
   --accent: 245 75% 54.5%;
