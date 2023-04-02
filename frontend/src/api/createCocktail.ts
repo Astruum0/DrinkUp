@@ -26,7 +26,7 @@ export const createCocktail = async (cocktail: ICocktail) => {
 
             const formData = new FormData();
             formData.append("file", cocktail.picture, `${cocktailId}.${fileExt}` )
-            await fetch(`${process.env.REACT_APP_API_URL}/cocktails/upload`, {
+            await fetch(`${process.env.REACT_APP_API_URL}/images/upload`, {
                 method: "POST",
                 body: formData
             })
