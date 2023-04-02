@@ -5,6 +5,7 @@ import { Cocktail, CocktailSchema } from 'src/Schemas/Cocktail.schema';
 import { CocktailsService } from 'src/Services/cocktail.service';
 import { CocktailsController } from '../Controllers/cocktail.controller';
 import { Ingredient, IngredientSchema } from 'src/Schemas/ingredient.schema';
+import { ImageService } from 'src/Services/image.service';
 
 @Module({
   imports: [
@@ -16,6 +17,6 @@ import { Ingredient, IngredientSchema } from 'src/Schemas/ingredient.schema';
     ]),
   ],
   controllers: [CocktailsController],
-  providers: [CocktailsService, IngredientsService],
+  providers: [CocktailsService, IngredientsService, ImageService],
 })
 export class CocktailsModule {}

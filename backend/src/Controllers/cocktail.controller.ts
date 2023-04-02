@@ -2,35 +2,11 @@ import { CocktailIngredient } from 'src/Types/cocktailIngredient';
 import { randomUUID } from 'crypto';
 import { Cocktail } from './../Schemas/cocktail.schema';
 import { CreateCocktailDto } from './../Dto/create-cocktail.dto';
-import {
-  Controller,
-  Get,
-  Post,
-  Param,
-  Delete,
-  Body,
-  UseInterceptors,
-  UploadedFile
-} from '@nestjs/common';
+import { Controller, Get, Post, Param, Delete, Body } from '@nestjs/common';
 import { CocktailsService } from 'src/Services/cocktail.service';
-import { diskStorage } from 'multer';
-import { FileInterceptor } from '@nestjs/platform-express';
-import path = require('path');
 import { IngredientsService } from 'src/Services/ingredient.service';
 import { Ingredient } from 'src/Schemas/ingredient.schema';
 import { ApiTags, ApiCreatedResponse, ApiResponse } from '@nestjs/swagger';
-
-const storage = {
-  storage: diskStorage({
-    destination: './uploads/cocktails',
-    filename: (_, file, cb) => {
-      const filename: string = path.parse(file.originalname).name
-      const extension: string = path.parse(file.originalname).ext;
-
-      cb(null, `${filename}${extension}`)
-    }
-  })
-}
 
 @ApiTags('Cocktails')
 @Controller('cocktails')
@@ -54,17 +30,19 @@ export class CocktailsController {
       allQueries.push(this.ingredientService.findOne(ingredient.ingredient));
     });
 
-    const queryResults = await Promise.all(allQueries)
+    const queryResults = await Promise.all(allQueries);
     for (let i = 0; i < createCocktailDto.cocktailIngredients.length; i++) {
-      let ingredient = queryResults[i]
+      let ingredient = queryResults[i];
       if (!ingredient) {
-        ingredient = await this.ingredientService.newIngredient(createCocktailDto.cocktailIngredients[i].ingredient) 
+        ingredient = await this.ingredientService.newIngredient(
+          createCocktailDto.cocktailIngredients[i].ingredient,
+        );
       }
-      const quantity = createCocktailDto.cocktailIngredients[i].quantity
-      recipe.push({ ingredient, quantity })
+      const quantity = createCocktailDto.cocktailIngredients[i].quantity;
+      recipe.push({ ingredient, quantity });
     }
 
-    const cocktailID = randomUUID()
+    const cocktailID = randomUUID();
     const cocktail: Cocktail = {
       id: cocktailID,
       name: createCocktailDto.name,
@@ -89,13 +67,6 @@ export class CocktailsController {
     }
   }
 
-  @Post('/upload')
-  @UseInterceptors(
-    FileInterceptor('file', storage))
-  upload(@UploadedFile() file) {
-    return {"file": file.filename}
-  }
-
   @Get()
   @ApiResponse({
     status: 200,
@@ -113,7 +84,9 @@ export class CocktailsController {
     type: [Cocktail],
   })
   async trending() {
-    return (await this.cocktailService.findAll()).sort((c1, c2) => (c2.rating/c2.ratingsNb) - (c1.rating/c1.ratingsNb))
+    return (await this.cocktailService.findAll()).sort(
+      (c1, c2) => c2.rating / c2.ratingsNb - c1.rating / c1.ratingsNb,
+    );
   }
 
   @Get(':id')
