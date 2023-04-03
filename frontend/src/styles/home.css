@@ -4,6 +4,7 @@
     align-items: flex-start;
     flex-flow: column;
     width: 100%;
+    max-width: 1300px;
 }
 
 .text-pannel {
