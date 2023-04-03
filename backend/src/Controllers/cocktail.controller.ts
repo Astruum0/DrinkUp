@@ -68,7 +68,7 @@ export class CocktailsController {
     }
   }
 
-  @Post('/create-cocktail')
+  @Post('/doable')
   @ApiCreatedResponse({
     status: 201,
     description:
@@ -76,29 +76,7 @@ export class CocktailsController {
     type: CreateCocktailDto,
   })
   async create_cocktail(@Body() ingredientsList: ingredientsListDto) {
-    this.cocktailService.findAll().then((data) => {
-      const partially_doable = [];
-      const doable = [];
-      let ingredient_name: string;
-      let percentage: number;
-      for (let i = 0; i < data.length; i++) {
-        const cocktail = data[i];
-        let completion = 0;
-        for (let j = 0; j < cocktail.ingredients.length; j++) {
-          ingredient_name = cocktail.ingredients[j].ingredient.name;
-          if (ingredientsList.ingredients.includes(ingredient_name)) {
-            completion += 1;
-          }
-        }
-        percentage = completion / cocktail.ingredients.length;
-        if (percentage == 1) {
-          doable.push(cocktail);
-        } else if (percentage >= 0.5) {
-          partially_doable.push(cocktail);
-        }
-      }
-      console.log(doable, partially_doable);
-    });
+    return this.cocktailService.findDoableCocktails(ingredientsList)
   }
 
   @Get()
