@@ -68,14 +68,14 @@ export class CocktailsController {
     }
   }
 
-  @Post('/doable')
+  @Post('/search')
   @ApiCreatedResponse({
     status: 201,
     description:
       'Return two lists of cocktails that can be made from the list of ingredients supplied',
     type: CreateCocktailDto,
   })
-  async create_cocktail(@Body() ingredientsList: ingredientsListDto) {
+  async create_cocktail(@Body() ingredientsList: ingredientsListDto) {    
     return this.cocktailService.findDoableCocktails(ingredientsList)
   }
 
