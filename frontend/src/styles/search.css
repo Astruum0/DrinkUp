@@ -1,0 +1,10 @@
+.search-output {
+    width: 100%;
+    max-width: 1300px;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
+.search-output h2 {
+    margin: 50px 0;
+}

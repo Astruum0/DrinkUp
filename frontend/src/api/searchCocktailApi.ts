@@ -1,6 +1,6 @@
-import { ICocktail, IIngredient } from "../models"
+import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../models"
 
-export const getCocktailsFromSearch = async (ingredients: IIngredient[]): Promise<{"doable": ICocktail[], "partially": ICocktail[]}> => {
+export const getCocktailsFromSearch = async (ingredients: IIngredient[]): Promise<{"doable": IFullyDetailedCocktail[], "partially": IFullyDetailedCocktail[]}> => {
     try {
         let res = await fetch(`${process.env.REACT_APP_API_URL}/cocktails/search`, {
             method: "POST",
@@ -12,7 +12,7 @@ export const getCocktailsFromSearch = async (ingredients: IIngredient[]): Promis
             })
         })
 
-        let resJson = await res.json() as {"doable": ICocktail[], "partially": ICocktail[]}
+        let resJson = await res.json() as {"doable": IFullyDetailedCocktail[], "partially": IFullyDetailedCocktail[]}
         return resJson
 
     } catch(err) {

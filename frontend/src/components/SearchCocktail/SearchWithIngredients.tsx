@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { useApi } from "../../api/useApi"
-import { ICocktail, IIngredient } from "../../models"
+import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../../models"
 import "../../styles/form.css"
+import "../../styles/search.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { getCocktailsFromSearch } from "../../api/searchCocktailApi"
+import CocktailPreviewCard from "../Home/CocktailPreviewCard"
 
 const SearchWithIngredients = () => {
     let allIngredients: IIngredient[] = []
@@ -14,8 +16,8 @@ const SearchWithIngredients = () => {
     const [listedIngredients, setListedIngredients] = useState<IIngredient[]>([])    
     const [autoCompleteIngredients, setAutoCompleteIngredients] = useState<IIngredient[]>([])
     const [showAutoComplete, setShowAutoComplete] = useState(false)
-    const [doableCocktails, setDoableCocktails] = useState<ICocktail[]>([])
-    const [partiallyDoableCocktails, setPartiallyDoableCocktails] = useState<ICocktail[]>([])
+    const [doableCocktails, setDoableCocktails] = useState<IFullyDetailedCocktail[]>([])
+    const [partiallyDoableCocktails, setPartiallyDoableCocktails] = useState<IFullyDetailedCocktail[]>([])
 
     useEffect(() => {
         if (ingredientState.error) console.error(ingredientState.error)
@@ -23,7 +25,7 @@ const SearchWithIngredients = () => {
     })
 
     const updateAutoCompletion = (field: string) => {
-        setAutoCompleteIngredients(allIngredients.filter(i => i.name.toLowerCase().includes(field.toLowerCase())))
+        setAutoCompleteIngredients(allIngredients.filter(i => i.name.toLowerCase().includes(field.toLowerCase()) && !listedIngredients.map(li => li.id).includes(i.id)))
         setShowAutoComplete(true)
     }
 
@@ -69,13 +71,12 @@ const SearchWithIngredients = () => {
           const res = await getCocktailsFromSearch(listedIngredients)
           setDoableCocktails(res.doable)
           setPartiallyDoableCocktails(res.partially)
-          console.log(res);
         } catch(err) {
           console.log(err);
         }
       }
 
-    return (
+    return (<>
         <div className="search-cocktail">
             <h1>Rechercher un cocktails</h1>
             <div className="add-ingredient">
@@ -108,9 +109,35 @@ const SearchWithIngredients = () => {
                     </div>
                 })
             }
+            </div>
             <button onClick={onSubmit} className="btn btn-filled create-btn">Trouvez votre bonheur</button>
-      </div>
-    </div>
+
+            
+
+            
+        </div>
+        <div className="search-output">
+        {doableCocktails.length > 0 && <>
+            <h2>Voici les cocktails que vous pouvez faire</h2>
+                <div className="cocktails-list">
+                {doableCocktails.map((cocktail) => {
+                    return <CocktailPreviewCard key={cocktail.id} cocktail={cocktail} fullyDetailed ownedIngredients={listedIngredients}/>
+                })
+            }
+            </div></>
+            }
+            {partiallyDoableCocktails.length > 0 && <>
+            <h2>Essayez ces cocktails</h2>
+                <div className="cocktails-list">
+                {partiallyDoableCocktails.map((cocktail) => {
+                    return <CocktailPreviewCard key={cocktail.id} cocktail={cocktail} fullyDetailed ownedIngredients={listedIngredients}/>
+                })
+            }
+            </div></>
+            }
+        
+        </div>
+    </>
     )
 }
 
