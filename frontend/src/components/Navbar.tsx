@@ -7,7 +7,7 @@ function Navbar() {
     <div className="navbar">
       <div className="logo"><Link to=""><img src={logo} alt="DrinkUp" draggable="false"/></Link></div>
         <Link to="" className="selected">Accueil</Link>
-        <Link to="">Les cocktails</Link>
+        <Link to="search">Rechercher</Link>
         <Link to="">Commander</Link>
         <Link to="" className="btn">Connexion</Link>
     </div>

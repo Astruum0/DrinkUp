@@ -7,7 +7,7 @@
     flex-flow: column;
 }
 
-.create-cocktail * {
+.create-cocktail *, .search-cocktail * {
     margin: 5px 0;
 }
 
@@ -22,7 +22,7 @@
     margin: 2px;
 }
 
-.create-cocktail input[type='text'] {
+.create-cocktail input[type='text'], .searchbar {
     font-family: "Poppins";
     width: calc(100% - 16px);
     height: 30px;
@@ -39,7 +39,7 @@
     min-width: calc(100% - 16px);
 }
 
-.create-cocktail button {
+.create-cocktail button, .search-cocktail button {
     font-size: 15px;
     height: 38px;
 }

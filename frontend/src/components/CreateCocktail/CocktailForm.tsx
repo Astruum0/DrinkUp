@@ -39,7 +39,7 @@ function CocktailForm() {
   })
 
   const updateAutoCompletion = (field: string) => {
-    setAutoCompleteIngredients(allIngredients.filter(i => i.name.includes(field)))
+    setAutoCompleteIngredients(allIngredients.filter(i => i.name.toLowerCase().includes(field.toLowerCase())))
     setShowAutoComplete(true)
   }
 
