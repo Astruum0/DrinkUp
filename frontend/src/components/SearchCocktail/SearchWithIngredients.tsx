@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { getCocktailsFromSearch } from "../../api/searchCocktailApi"
 import CocktailPreviewCard from "../Home/CocktailPreviewCard"
+import { Link } from "react-router-dom"
 
 const SearchWithIngredients = () => {
     let allIngredients: IIngredient[] = []
@@ -36,10 +37,10 @@ const SearchWithIngredients = () => {
           setAutoCompleteIngredients([])
           setShowAutoComplete(false)
         }
-        const knownIngredient = allIngredients.filter(i => i.name.toLowerCase() === event.target.value.toLowerCase()).at(0)
-        if (knownIngredient) {
-          setShowAutoComplete(false)
-        } 
+        // const knownIngredient = allIngredients.filter(i => i.name.toLowerCase() === event.target.value.toLowerCase()).at(0)
+        // if (knownIngredient) {
+        //   setShowAutoComplete(false)
+        // } 
         setSearchField(event.target.value)
     };
 
@@ -127,7 +128,10 @@ const SearchWithIngredients = () => {
             </div></>
             }
             {partiallyDoableCocktails.length > 0 && <>
-            <h2>Essayez ces cocktails</h2>
+                <div className="cocktails-list-header">
+                    <h2>Essayez ces cocktails</h2>
+                    <Link to="../order" className="filled-link">Commandez ce qui vous manque {'>'}</Link>
+                </div>
                 <div className="cocktails-list">
                 {partiallyDoableCocktails.map((cocktail) => {
                     return <CocktailPreviewCard key={cocktail.id} cocktail={cocktail} fullyDetailed ownedIngredients={listedIngredients}/>
