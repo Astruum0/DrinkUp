@@ -1,0 +1,72 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+
+  /* colors */
+  --bkg: 248 80% 98%;
+  --muted: 248 15.7% 80%;
+  --text: 246 76% 4.9%;
+  --accent: 245 75% 54.5%;
+  --accent2: 40 98.2% 43.7%;
+
+  /* utils */
+  --space-sm: clamp(0.4rem, 1.5vw, .8rem);
+  --space-md: clamp(1rem, 2.5vw, 1.4rem);
+  --space-lg: clamp(2rem, 4vw, 2.2rem);
+  --content: 50ch;
+  --round-sm: 4px;
+  --round-md: 10px;
+  --round-lg: 15px;
+  --round-full: 100vmax;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: var(--space-lg);
+
+  line-height: var(--lh-1-4);
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  background-color: hsl(var(--background-color));
+  color: hsl(var(--text));
+}
+
+small {
+  font-size: var(--fs-200);
+  line-height: var(--lh-1);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.stack-lg {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.stack-md {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.stack-sm {
+  display: grid;
+  gap: var(--space-sm);
+}
