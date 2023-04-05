@@ -15,8 +15,8 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/search" element={<SearchWithIngredients />} />
                 <Route path="/new" element={<CocktailForm />} />
-                <Route path="/cocktail" element={<CocktailList/>}/>
-                <Route path="/cocktailDetail/:id" element={<CocktailDetail/>} />
+                <Route path="/cocktails" element={<CocktailList/>}/>
+                {/* <Route path="/cocktailDetail/:id" element={<CocktailDetail/>} /> */}
             </Routes>
         </div>
     )
