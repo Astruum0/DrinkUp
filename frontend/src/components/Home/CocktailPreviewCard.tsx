@@ -62,9 +62,9 @@ const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients}: {cockt
                     : <span>Aucune notes</span>
                     }
                 </div>
-                {/* <Link to={`/cocktailDetail/${cocktail.id}`} className="btn btn-filled">
+                <Link to={`/cocktailDetail/${cocktail.id}`} className="btn btn-filled">
                     Détails
-                </Link> */}
+                </Link>
             </div>
         </div>
     )
