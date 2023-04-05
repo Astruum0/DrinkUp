@@ -22,6 +22,8 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/search" element={<SearchWithIngredients />} />
                 <Route path="/new" element={<CocktailForm />} />
+                <Route path="/cocktails" element={<CocktailList />} />
+
                 <Route path="/login" element={<LoginForm setToken={setToken}/>} />
                 <Route path="/admin" element={
                     token ?
