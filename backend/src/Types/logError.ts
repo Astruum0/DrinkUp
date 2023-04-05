@@ -1,4 +1,4 @@
 export interface LogError {
-    type: string,
-    description: string
+  type: string;
+  description: string;
 }

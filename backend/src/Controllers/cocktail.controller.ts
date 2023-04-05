@@ -6,7 +6,12 @@ import { Controller, Get, Post, Param, Delete, Body } from '@nestjs/common';
 import { CocktailsService } from 'src/Services/cocktail.service';
 import { IngredientsService } from 'src/Services/ingredient.service';
 import { Ingredient } from 'src/Schemas/ingredient.schema';
-import { ApiTags, ApiCreatedResponse, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiCreatedResponse,
+  ApiResponse,
+  ApiBody,
+} from '@nestjs/swagger';
 import { ingredientsListDto } from 'src/Dto/ingredients-list.dto';
 
 @ApiTags('Cocktails')
@@ -21,6 +26,10 @@ export class CocktailsController {
   @ApiCreatedResponse({
     status: 201,
     description: 'The cocktail has been successfully created.',
+    type: CreateCocktailDto,
+  })
+  @ApiBody({
+    required: true,
     type: CreateCocktailDto,
   })
   async create(@Body() createCocktailDto: CreateCocktailDto) {
@@ -47,11 +56,12 @@ export class CocktailsController {
     const cocktail: Cocktail = {
       id: cocktailID,
       name: createCocktailDto.name,
-      picture: createCocktailDto.picture ? cocktailID : "cocktail-template",
+      picture: createCocktailDto.picture ? cocktailID : 'cocktail-template',
       ingredients: recipe,
       description: createCocktailDto.description,
       ratingsNb: 0,
       rating: 0,
+      isApproved: false,
     };
 
     try {
@@ -69,14 +79,14 @@ export class CocktailsController {
   }
 
   @Post('/search')
-  @ApiCreatedResponse({
-    status: 201,
+  @ApiResponse({
+    status: 200,
     description:
       'Return two lists of cocktails that can be made from the list of ingredients supplied',
     type: CreateCocktailDto,
   })
-  async create_cocktail(@Body() ingredientsList: ingredientsListDto) {    
-    return this.cocktailService.findDoableCocktails(ingredientsList)
+  async create_cocktail(@Body() ingredientsList: ingredientsListDto) {
+    return this.cocktailService.findDoableCocktails(ingredientsList);
   }
 
   @Get()

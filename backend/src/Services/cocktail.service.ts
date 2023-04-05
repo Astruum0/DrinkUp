@@ -24,8 +24,10 @@ export class CocktailsService {
     return this.cocktailModel.findOne({ id: id }).exec();
   }
 
-  async findDoableCocktails(ingredientsList: ingredientsListDto): Promise<{"doable": Cocktail[], "partially": Cocktail[]}> { 
-    let all = await this.cocktailModel.find().exec() as Cocktail[]
+  async findDoableCocktails(
+    ingredientsList: ingredientsListDto,
+  ): Promise<{ doable: Cocktail[]; partially: Cocktail[] }> {
+    const all = (await this.cocktailModel.find().exec()) as Cocktail[];
     const partially = [];
     const doable = [];
     let percentage: number;
@@ -33,7 +35,11 @@ export class CocktailsService {
       const cocktail = all[i];
       let completion = 0;
       for (let j = 0; j < cocktail.ingredients.length; j++) {
-        if (ingredientsList.ingredients.includes(cocktail.ingredients[j].ingredient.id)) {
+        if (
+          ingredientsList.ingredients.includes(
+            cocktail.ingredients[j].ingredient.id,
+          )
+        ) {
           completion += 1;
         }
       }
@@ -45,7 +51,8 @@ export class CocktailsService {
       }
     }
     return {
-      doable, partially
-    }
+      doable,
+      partially,
+    };
   }
 }
