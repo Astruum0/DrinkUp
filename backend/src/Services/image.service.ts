@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  Query,
-  Res,
-} from '@nestjs/common';
+import { Injectable, Query, Res } from '@nestjs/common';
 
 @Injectable()
 export class ImageService {
@@ -11,18 +7,18 @@ export class ImageService {
 
     extensions.forEach((extension) => {
       try {
-      res.sendFile(
-        `${query.id + extension}`,
-        {
-          root: 'uploads/cocktails',
-        },
-        function (err) {
-          if (!err) {
-            console.log('Sent:', `${query.id + extension}`);
-          }
-        },
-      );
-      } catch(err) {
+        res.sendFile(
+          `${query.id + extension}`,
+          {
+            root: 'uploads/cocktails',
+          },
+          function (err) {
+            if (!err) {
+              console.log('Sent:', `${query.id + extension}`);
+            }
+          },
+        );
+      } catch (err) {
         console.log(err);
       }
     });

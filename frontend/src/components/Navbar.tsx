@@ -2,7 +2,12 @@ import "../styles/navbar.css"
 import logo from "../assets/drinkupLogo.png"
 import { Link, useLocation } from "react-router-dom";
 
-function Navbar() {
+interface NavbarProps {
+  token: string,
+  setToken: (name: string) => void
+}
+
+function Navbar({token, setToken}:NavbarProps) {
   const location = useLocation()
   return (
     <div className="navbar">
@@ -11,7 +16,8 @@ function Navbar() {
         <Link to="search" className={location.pathname === "/search" ? "selected" : ""}>Rechercher</Link>
         <Link to="cocktails" className={location.pathname === "/cocktails" ? "selected" : ""}>Les cocktails</Link>
         <Link to="order" className={location.pathname === "/order" ? "selected" : ""}>Commander</Link>
-        {/* <Link to="" className="btn">Connexion</Link> */}
+        {token ? <Link to="admin" className="btn">Admin</Link> : <Link to="login" className="btn">Connexion</Link>}
+        {token ? <button className="btn" onClick={() => setToken("")}>Deconnexion</button> : <></>}
     </div>
   )
 }
