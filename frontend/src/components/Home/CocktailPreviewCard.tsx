@@ -23,7 +23,7 @@ const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients}: {cockt
 
     return (
         <div className="cocktail-preview-card">
-            <img className="cocktail-image-preview" src={`${process.env.REACT_APP_API_URL}/images/get?id=${cocktail.id}`}></img>
+            <img className="cocktail-image-preview" src={`${process.env.REACT_APP_API_URL}/images/get?id=${cocktail.picture}`}></img>
             <h3>{cocktail.name}</h3>
             {fullyDetailed && <>
                 <p className="description">{cocktail.description ? cocktail.description : "Aucune description"}</p>
