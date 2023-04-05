@@ -19,5 +19,5 @@ const CocktailList = () => {
         </div>
     )
 }
-//la mère à arthur
+
 export default CocktailList 
