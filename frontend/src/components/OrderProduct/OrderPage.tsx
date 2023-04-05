@@ -1,46 +1,46 @@
-import "../../styles/home.css"
+import { Link } from "react-router-dom";
+import "../../styles/home.css";
+import vodka from "../../assets/products/vodka.png"
+import bailey from "../../assets/products/bailey.png"
+import rhum from "../../assets/products/rhum.png"
 
 function OrderPage() {
   return (
-    <div className="cocktail-preview-card">
-    <img className="cocktail-image-preview" src=""></img>
-    <h3>Rhum</h3>
-        <p className="description">description</p>
-        <ul className="recipe">
-        {
-            cocktail.ingredients.filter(r => ownedIngredients?.map(i => i.id).includes(r.ingredient.id)).map(r => {
-                return <li key={r.ingredient.id} className="owned">– {r.ingredient.name} {r.quantity ? `(${r.quantity})` : ""} <FontAwesomeIcon icon={faCheck}/></li>
-            })
-        }
-        {
-            cocktail.ingredients.filter(r => !ownedIngredients?.map(i => i.id).includes(r.ingredient.id)).map(r => {
-                return <li key={r.ingredient.id}>– {r.ingredient.name} {r.quantity ? `(${r.quantity})` : ""}</li>
-            })
-        }
-    </ul>
+    <div className="container">
+      <div className="product-preview-card">
+        <img
+          className="product-image-preview"
+          src={rhum}
+          alt="bouteille"
+        ></img>
+        <h1>Rhum</h1>
+        <p className="description">Miam bon rhum slurp</p>
+        <Link to="rhum">Commander</Link>
+      </div>
 
-    <div className="card-footer">
-        <div className="rating">
-            {
-            average ? 
-            <>
-                <p>{average.toFixed(1)}</p>
-                {[...Array(starsDisplay.full)].map((_, i) => {
-                    return <FontAwesomeIcon key={i} icon={faSolidStar}/>
-                })}
-                {starsDisplay.half ? <FontAwesomeIcon icon={faStarHalfStroke}/> : <></>}
-                {[...Array(starsDisplay.empty)].map((_, i) => {
-                    return <FontAwesomeIcon key={i+10} icon={faRegularStar}/>
-                })}
-                <span>({cocktail.ratingsNb})</span>
-            </> 
-            : <span>Aucune notes</span>
-            }
-        </div>
-        {/* <button className="btn btn-filled">Détails</button> */}
+      <div className="product-preview-card">
+        <img
+          className="product-image-preview"
+          src={vodka}
+          alt="bouteille"
+        ></img>
+        <h1>Vodka</h1>
+        <p className="description">Miam bon vodka slurp</p>
+        <Link to="vodka">Commander</Link>
+      </div>
+
+      <div className="product-preview-card">
+        <img
+          className="product-image-preview"
+          src={bailey}
+          alt="bouteille"
+        ></img>
+        <h1>Bailey</h1>
+        <p className="description">Miam bon caramel slurp</p>
+        <Link to="bailey">Commander</Link>
+      </div>
     </div>
-</div>
-  )
+  );
 }
 
-export default OrderPage
+export default OrderPage;
