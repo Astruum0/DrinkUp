@@ -2,11 +2,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../../models"
 import "../../styles/home.css"
 import "../../styles/cocktailCard.css"
-import { faCheck, faStar as faSolidStar } from "@fortawesome/free-solid-svg-icons"
+import { faCheck, faStar as faSolidStar, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { faStar as faRegularStar, faStarHalfStroke} from "@fortawesome/free-regular-svg-icons"
 
+interface CocktailPreviewCardProps {
+    cocktail: IFullyDetailedCocktail, 
+    fullyDetailed?: boolean, 
+    ownedIngredients?: IIngredient[]
+    onDelete?: any,
+}
 
-const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients}: {cocktail: IFullyDetailedCocktail, fullyDetailed?: boolean, ownedIngredients?: IIngredient[]}) => {
+const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients, onDelete}: CocktailPreviewCardProps) => {
     const { rating, ratingsNb } = cocktail
     const average = (rating && ratingsNb && ratingsNb > 0) ? (rating / ratingsNb) / 2 : undefined
 
@@ -60,7 +66,7 @@ const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients}: {cockt
                     : <span>Aucune notes</span>
                     }
                 </div>
-                {/* <button className="btn btn-filled">Détails</button> */}
+                {onDelete && <button className="btn btn-error" onClick={onDelete}>Supprimer <FontAwesomeIcon icon={faTrash}/> </button>}
             </div>
         </div>
     )

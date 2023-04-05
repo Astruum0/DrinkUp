@@ -15,17 +15,23 @@ const AdminPanel = ({token, setToken}:NavbarProps) => {
         if (cocktailsState.error) console.error(cocktailsState.error)
         else setAllCocktails(cocktailsState.data)
     })
-  return (
-    <div>
-        <h1>Gérer les cocktails</h1>
-        <div className="cocktails-list">
-            {allCocktails.map((cocktail) => {
-                return <CocktailPreviewCard key={cocktail.id} cocktail={cocktail} fullyDetailed/>
-            })
-            }
+
+    const deleteCocktail = async (cocktailId: string) => {
+        console.log(cocktailId);
+        
+    }
+
+    return (
+        <div>
+            <h1>Gérer les cocktails</h1>
+            <div className="cocktails-list">
+                {allCocktails.map((cocktail) => {
+                    return <CocktailPreviewCard key={cocktail.id} cocktail={cocktail} fullyDetailed onDelete={() => deleteCocktail(cocktail.id as string)}/>
+                })
+                }
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default AdminPanel
