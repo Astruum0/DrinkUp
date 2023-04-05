@@ -5,7 +5,7 @@ import CocktailForm from './components/CreateCocktail/CocktailForm';
 import HomePage from './components/Home/HomePage';
 import SearchWithIngredients from './components/SearchCocktail/SearchWithIngredients';
 import CocktailList from './components/CocktailList/CocktailList';
-import CocktailDetail from './components/CocktailDisplay/CocktailDisplay'
+// import CocktailDetail from './components/CocktailDisplay/CocktailDisplay'
 
 function App() {
     return (

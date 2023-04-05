@@ -11,12 +11,15 @@ const CocktailList = () => {
         else setTrendingCocktails(cocktailsState.data)
     })
     return (
+        <>
+        <h1>Nos cocktails</h1>
         <div className="cocktails-list">
             {trendingCocktails.map((cocktail) => {
                 return <CocktailPreviewCard key={cocktail.id} cocktail={cocktail}/>
             })
             }
         </div>
+        </>
     )
 }
 
