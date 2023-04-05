@@ -12,9 +12,11 @@ export class UsersController {
     async createUser(
         @Body('password') password: string,
         @Body('username') username: string,
-        @Body('email') email: string,
+        // @Body('email') email: string,
     ): Promise<User | LogError> {
-        if (!username || !email || !password) {
+        if (!username || 
+            // !email || 
+            !password) {
             return {type: "RequestError", description: "Invalid Body"}
         }
 
@@ -23,8 +25,8 @@ export class UsersController {
         try {
             const result = await this.usersService.createUser(
                 username,
-                hashedPassword,
-                email
+                hashedPassword
+                // email
                 );
                 return result;
         } catch(err) {
