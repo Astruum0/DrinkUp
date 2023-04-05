@@ -27,19 +27,19 @@ export class UsersService {
             // admin_role: false
         });
     }
-    if (await this.getUser({ email })) {
-      throw new Error('Email already used');
-    }
+    // if (await this.getUser({ email })) {
+    //   throw new Error('Email already used');
+    // }
 
-    return this.userModel.create({
-      id: randomUUID(),
-      username,
-      password,
-      email,
-      profile_pic: '',
-      admin_role: false,
-    });
-  }
+  //   return this.userModel.create({
+  //     id: randomUUID(),
+  //     username,
+  //     password,
+  //     email,
+  //     profile_pic: '',
+  //     admin_role: false,
+  //   });
+  // }
   async getUser(query: object): Promise<User> {
     return this.userModel.findOne(query);
   }

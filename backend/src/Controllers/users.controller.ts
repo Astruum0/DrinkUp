@@ -26,7 +26,7 @@ export class UsersController {
       const result = await this.usersService.createUser(
         username,
         hashedPassword,
-        email,
+        // email,
       );
       return result;
     } catch (err) {
