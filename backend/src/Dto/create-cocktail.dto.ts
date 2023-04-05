@@ -8,7 +8,7 @@ export class CreateCocktailDto {
   name: string;
 
   @ApiProperty()
-  picture: string;
+  picture: boolean;
 
   @ApiProperty({
     isArray: true,

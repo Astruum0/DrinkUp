@@ -47,7 +47,7 @@ export class CocktailsController {
     const cocktail: Cocktail = {
       id: cocktailID,
       name: createCocktailDto.name,
-      picture: cocktailID,
+      picture: createCocktailDto.picture ? cocktailID : "cocktail-template",
       ingredients: recipe,
       description: createCocktailDto.description,
       ratingsNb: 0,

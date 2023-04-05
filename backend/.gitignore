@@ -12,7 +12,8 @@ yarn-error.log*
 lerna-debug.log*
 
 # Uploads
-/uploads
+/uploads/cocktails/*
+!/uploads/cocktails/cocktail-template.png
 
 # OS
 .DS_Store
@@ -36,5 +37,3 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-/uploads
