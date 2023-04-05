@@ -25,3 +25,8 @@
     width: 150px;
 }
 
+.navbar button.btn {
+    font-size: 17px;
+    height: 38px;
+}
+
