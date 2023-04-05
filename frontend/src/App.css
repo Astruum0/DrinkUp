@@ -2,10 +2,12 @@
     background-color: var(--background-color);
     color: white;
     text-align: center;
+    align-items: center;
     display: flex;
     justify-content: flex-start;
     flex-flow: column;
     height: 100vh;
+    overflow: scroll;
     padding: 0 80px;
 }
 
@@ -15,14 +17,20 @@
     border: solid 1px var(--main-color);
     border-radius: 50px;
     transition: all 0.15s ease-in-out;
+    background-color: var(--background-color);
 }
 
 .btn:hover {
     background-color: var(--main-color);
     color: var(--background-color);
+    cursor: pointer;
 }
 
 .btn-filled {
     background-color: var(--main-color);
     color: var(--background-color);
+}
+.btn-filled:hover {
+    color: white;
+    cursor: pointer;
 }

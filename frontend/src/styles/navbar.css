@@ -1,9 +1,11 @@
 .navbar {
     height: 80px;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex-flow: row;
+    max-width: 1300px;
 }
 
 .selected {

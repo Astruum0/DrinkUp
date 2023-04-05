@@ -1,3 +1,12 @@
+.home-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    width: 100%;
+    max-width: 1300px;
+}
+
 .text-pannel {
     display: flex;
     justify-content: center;
@@ -41,4 +50,17 @@
 }
 .current {
     width: 50%;
+}
+
+.filled-link {
+    color: var(--main-color);
+}
+.filled-link:hover {
+    text-decoration: underline;
+}
+.cocktails-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }

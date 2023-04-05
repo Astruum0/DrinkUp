@@ -1,6 +1,9 @@
-import { Ingredient } from 'src/schemas/ingredient.schema';
+import { ApiProperty } from '@nestjs/swagger';
+import { Ingredient } from 'src/Schemas/ingredient.schema';
 
-export type CocktailIngredient = {
+export class CocktailIngredient {
+  @ApiProperty()
   ingredient: Ingredient;
+  @ApiProperty()
   quantity: string;
-};
+}
