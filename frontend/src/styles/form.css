@@ -7,7 +7,7 @@
     flex-flow: column;
 }
 
-.create-cocktail *, .search-cocktail * {
+.create-cocktail *, .search-cocktail *, .login-form * {
     margin: 5px 0;
 }
 
@@ -22,7 +22,7 @@
     margin: 2px;
 }
 
-.create-cocktail input[type='text'], .searchbar {
+.create-cocktail input[type='text'], .searchbar, .login-form input {
     font-family: "Poppins";
     width: calc(100% - 16px);
     height: 30px;
@@ -39,7 +39,7 @@
     min-width: calc(100% - 16px);
 }
 
-.create-cocktail button, .search-cocktail button {
+.create-cocktail button, .search-cocktail button, .login-form button {
     font-size: 15px;
     height: 38px;
 }
@@ -128,4 +128,38 @@
 
 input:focus {
     outline: none;
+}
+
+.login-form {
+    width: 50%;
+    max-width: 1300px;
+    min-width: 400px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    transform: translate(0, -50%);
+}
+
+.error-message {
+    opacity: 0;
+    margin-top: 10px;
+    font-size: 20px;
+    height: 38px;
+    transition: all 0.5s ease-in-out;
+    border: lightcoral 3px solid;
+    background-color: red;
+    border-radius: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.error-message * {
+    margin: 3px;
+}
+.show {
+    opacity: 1;
 }
