@@ -37,6 +37,10 @@ export class Cocktail {
   @Prop()
   @ApiProperty()
   rating: number;
+
+  @Prop()
+  @ApiProperty()
+  isApproved: boolean;
 }
 
 export const CocktailSchema = SchemaFactory.createForClass(Cocktail);
