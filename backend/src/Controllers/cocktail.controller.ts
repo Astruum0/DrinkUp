@@ -128,6 +128,6 @@ export class CocktailsController {
     type: String,
   })
   remove(@Param('id') id: string) {
-    return `This action removes a #${id} cocktail`;
+    return this.cocktailService.delete(id);
   }
 }
