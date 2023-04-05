@@ -5,6 +5,8 @@ export const createCocktail = async (cocktail: ICocktail) => {
     recipe.forEach((i) => {
         if (i.id) i.ingredient = i.id
     })
+    const pictureName = cocktail.picture ? true : undefined
+    
     
     try {
         let res = await fetch(`${process.env.REACT_APP_API_URL}/cocktails/create`, {
@@ -15,7 +17,8 @@ export const createCocktail = async (cocktail: ICocktail) => {
             body: JSON.stringify({
                 name: cocktail.name,
                 cocktailIngredients: recipe,
-                description: cocktail.description
+                description: cocktail.description,
+                picture: pictureName
             })
         })
         let resJson = await res.json()
