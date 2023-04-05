@@ -75,7 +75,7 @@ export class CocktailsController {
       'Return two lists of cocktails that can be made from the list of ingredients supplied',
     type: CreateCocktailDto,
   })
-  async create_cocktail(@Body() ingredientsList: ingredientsListDto) {    
+  async create_cocktail(@Body() ingredientsList: ingredientsListDto) {
     return this.cocktailService.findDoableCocktails(ingredientsList)
   }
 
