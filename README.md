@@ -1,4 +1,4 @@
-[logo_flat](https://user-images.githubusercontent.com/60743111/230406148-70a136fe-4149-45db-9c33-cb81aa96e1be.png)
+![logo_flat](https://user-images.githubusercontent.com/60743111/230406633-cfbd935b-007d-4a30-a201-35faa0319f62.png)
 
 # Drink'Up
 
