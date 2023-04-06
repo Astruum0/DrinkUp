@@ -29,7 +29,7 @@ const ProductDisplay = ({name, base_price, description} :Product) => (
       <h2>{base_price}€</h2>
       </div>
     </div>
-    <form action="http://localhost:3001/ingredients/create-checkout-session" method="POST">
+    <form action={`${process.env.REACT_APP_API_URL}/ingredients/create-checkout-session`} method="POST">
       <input type="number" name="qty" defaultValue={1} className="qty-input" min="1" max="100"></input><br></br><br></br>
       <input type="hidden" name="name" value={name}></input>
       <input type="hidden" name="base_price" value={base_price}></input>
@@ -66,6 +66,6 @@ export default function App() {
   return message ? (
     <Message message={message} />
   ) : (
-    <ProductDisplay name={window.location.href.split("/").slice(-1).pop() as "vodka" | "bailey" | "rhum"} base_price={15} description="Bon produit miam"/>
+    <ProductDisplay name={window.location.href.split("/").slice(-1).pop() as "vodka" | "bailey" | "rhum"} base_price={15} description="Alcool"/>
   );
 }
