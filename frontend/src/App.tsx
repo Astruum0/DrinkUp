@@ -7,7 +7,6 @@ import SearchWithIngredients from './components/SearchCocktail/SearchWithIngredi
 import OrderPage from './components/OrderProduct/OrderPage';
 import BuyProduct from './components/OrderProduct/BuyProduct';
 import CocktailList from './components/CocktailList/CocktailList';
-// import CocktailDetail from './components/CocktailDisplay/CocktailDisplay'
 import LoginForm from './components/Authentification/LoginForm';
 import { useState } from 'react';
 import AdminPanel from './components/Admin/AdminPanel';

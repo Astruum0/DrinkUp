@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useApi } from "../../api/useApi"
-import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../../models"
+import { IFullyDetailedCocktail, IIngredient } from "../../models"
 import "../../styles/form.css"
 import "../../styles/search.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

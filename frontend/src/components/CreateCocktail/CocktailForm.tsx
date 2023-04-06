@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { ICocktail, IIngredient, IRecipe } from "../../models";
 import { createCocktail } from "../../api/createCocktail";
-import { getAllIngredients } from "../../api/getAllIngredients";
 import { useApi } from "../../api/useApi";
 
 function CocktailForm() {
@@ -93,11 +92,15 @@ function CocktailForm() {
     }
   }
 
-  const onSubmit = () => {
-    console.log(values);
+  const onSubmit = async () => {
+    console.log("clicked");
     
+    if (values.name.trim() === "" || values.ingredients.length === 0) return
     try {
-      const res = createCocktail(values)
+      const res = await createCocktail(values)
+      if (res) {
+        setValues(initialState)
+      }
     } catch(err) {
       console.log(err);
     }
@@ -163,7 +166,7 @@ function CocktailForm() {
       <label htmlFor="file" className="btn image-input">Ajouter une image</label>
       <input type="file" accept="image/*" id="file" onChange={onImageChange}/>
       {imageUrl && <img className="cocktail-image" src={imageUrl}/>}
-      <button onClick={onSubmit} className="btn btn-filled create-btn">Créer</button>
+      <button disabled={values.name.trim() === "" || values.ingredients.length === 0}  onClick={onSubmit} className="btn btn-filled create-btn">Créer</button>
     </div>
   );
 }
