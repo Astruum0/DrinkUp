@@ -1,0 +1,13 @@
+.cocktail-image-detail {
+width: 40%;
+float:left
+}
+
+.cocktail-data {
+    padding-left: 40px;
+    border-radius: 20px;
+    width: 30%;
+    box-shadow: 2px 2px 2px black;
+    float:left;
+
+}
