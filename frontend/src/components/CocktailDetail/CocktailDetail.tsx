@@ -1,19 +1,7 @@
 import "../../App.css";
 import "../../styles/cocktailDetail.css";
-import React from "react";
-import { useApi } from "../../api/useApi";
-import { useState, useEffect } from "react";
 import { IFullyDetailedCocktail, IIngredient } from "../../models";
 import { useParams } from "react-router-dom";
-import {
-  faCheck,
-  faStar as faSolidStar,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faStar as faRegularStar,
-  faStarHalfStroke,
-} from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CocktailDetail({
   cocktail,
