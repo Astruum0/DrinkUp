@@ -1,21 +1,21 @@
-# DrinkUp
+[logo_flat](https://user-images.githubusercontent.com/60743111/230406148-70a136fe-4149-45db-9c33-cb81aa96e1be.png)
 
-## Lancement du projet :
+# Drink'Up
 
-Après clone du projet, ouvrir deux invites de commande.
-Dans la première : 
-```
-cd frontend
-npm install
-```
-Dans la deuxième : 
+## Installation et lancement
+
+### Backend
+
 ```
 cd backend
-npm install
-```
-Puis lancer sur les deux invites :
-```
+npm i
 npm start
 ```
 
-## Doc technique :
+### Frontend
+
+```
+cd frontend
+npm i
+npm start
+```
