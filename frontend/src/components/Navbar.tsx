@@ -40,6 +40,9 @@ function Navbar({ token, setToken }: NavbarProps) {
       <Link to="new" className={location.pathname === "/new" ? "selected" : ""}>
         Créer
       </Link>
+      <Link to="new" className={location.pathname === "/new" ? "selected" : ""}>
+        Créer
+      </Link>
       {token ? (
         <Link to="admin" className="btn">
           Admin

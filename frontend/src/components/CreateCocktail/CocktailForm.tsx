@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { ICocktail, IIngredient, IRecipe } from "../../models";
 import { createCocktail } from "../../api/createCocktail";
-import { getAllIngredients } from "../../api/getAllIngredients";
 import { useApi } from "../../api/useApi";
 
 function CocktailForm() {
@@ -93,11 +92,13 @@ function CocktailForm() {
     }
   }
 
-  const onSubmit = () => {
-    console.log(values);
-    
+  const onSubmit = async () => {
+    if (values.name.trim() === "" || values.ingredients.length === 0) return
     try {
-      const res = createCocktail(values)
+      const res = await createCocktail(values)
+      if (res) {
+        setValues(initialState)
+      }
     } catch(err) {
       console.log(err);
     }
@@ -112,7 +113,9 @@ function CocktailForm() {
           type='text'
           placeholder='Titre'
           onChange={onChange}
+          value={values.name}
           required
+          autoComplete="off"
           />
       <div className="add-ingredient">
         <div className="dropdown">
@@ -124,6 +127,7 @@ function CocktailForm() {
             value={newIngredient.ingredient}
             onChange={onChangeIngredient}
             onFocus={() => setShowAutoComplete(true)}
+            autoComplete="off"
           />
           <div className="dropdown-options">
             { showAutoComplete && autoCompleteIngredients.map((ingredient, i) => {
@@ -140,6 +144,7 @@ function CocktailForm() {
           placeholder='Ajouter quantité'
           value={newIngredient.quantity}
           onChange={onChangeIngredient}
+          autoComplete="off"
         />
         <button className="btn btn-filled add-ingredient-btn" onClick={addIngredient}>+</button>
       </div>
@@ -158,12 +163,13 @@ function CocktailForm() {
           id='description'
           placeholder='Description'
           onChange={onChange}
+          value={values.description}
           required
           />
       <label htmlFor="file" className="btn image-input">Ajouter une image</label>
       <input type="file" accept="image/*" id="file" onChange={onImageChange}/>
       {imageUrl && <img className="cocktail-image" src={imageUrl}/>}
-      <button onClick={onSubmit} className="btn btn-filled create-btn">Créer</button>
+      <button disabled={values.name.trim() === "" || values.ingredients.length === 0}  onClick={onSubmit} className="btn btn-filled create-btn">Créer</button>
     </div>
   );
 }

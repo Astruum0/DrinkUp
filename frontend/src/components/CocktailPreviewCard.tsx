@@ -1,27 +1,30 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../../models";
-import "../../styles/home.css";
-import "../../styles/cocktailCard.css";
+import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../models";
+import "../styles/home.css";
+import "../styles/cocktailCard.css";
 import {
   faCheck,
   faStar as faSolidStar,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faStar as faRegularStar,
   faStarHalfStroke,
 } from "@fortawesome/free-regular-svg-icons";
-import CocktailDetail from "../CocktailDisplay/CocktailDisplay";
-import { Link } from "react-router-dom";
+
+interface CocktailPreviewCardProps {
+  cocktail: IFullyDetailedCocktail;
+  fullyDetailed?: boolean;
+  ownedIngredients?: IIngredient[];
+  onDelete?: any;
+}
 
 const CocktailPreviewCard = ({
   cocktail,
   fullyDetailed,
   ownedIngredients,
-}: {
-  cocktail: IFullyDetailedCocktail;
-  fullyDetailed?: boolean;
-  ownedIngredients?: IIngredient[];
-}) => {
+  onDelete,
+}: CocktailPreviewCardProps) => {
   const { rating, ratingsNb } = cocktail;
   const average =
     rating && ratingsNb && ratingsNb > 0 ? rating / ratingsNb / 2 : undefined;
@@ -100,9 +103,11 @@ const CocktailPreviewCard = ({
             <span>Aucune notes</span>
           )}
         </div>
-        <Link to={`/cocktailDetail/${cocktail.id}`} className="btn btn-filled">
-          Détails
-        </Link>
+        {onDelete && (
+          <button className="btn btn-error" onClick={onDelete}>
+            Supprimer <FontAwesomeIcon icon={faTrash} />{" "}
+          </button>
+        )}
       </div>
     </div>
   );

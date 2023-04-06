@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useApi } from "../../api/useApi"
-import { ICocktail, IFullyDetailedCocktail } from "../../models"
-import CocktailPreviewCard from "./CocktailPreviewCard"
+import { IFullyDetailedCocktail } from "../../models"
+import CocktailPreviewCard from "../CocktailPreviewCard"
 
 const TrendingCocktails = () => {
     let [trendingCocktails, setTrendingCocktails] = useState<IFullyDetailedCocktail[]>([])
@@ -12,7 +12,7 @@ const TrendingCocktails = () => {
     })
     return (
         <div className="cocktails-list">
-            {trendingCocktails.map((cocktail) => {
+            {trendingCocktails.slice(0, 6).map((cocktail) => {
                 return <CocktailPreviewCard key={cocktail.id} cocktail={cocktail}/>
             })
             }

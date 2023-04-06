@@ -34,3 +34,12 @@
     color: white;
     cursor: pointer;
 }
+
+.btn-error {
+    color: red;
+    border: solid 1px red;
+}
+.btn-error:hover {
+    background-color: red;
+    color: white;
+}
