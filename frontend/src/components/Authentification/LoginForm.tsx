@@ -3,8 +3,7 @@ import "../../styles/form.css"
 import { login } from "../../api/authentification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons"
-import PropTypes from 'prop-types';
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 interface LoginFormProps {
   setToken: (name: string) => void

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useApi } from "../../api/useApi"
-import { ICocktail, IFullyDetailedCocktail } from "../../models"
+import { IFullyDetailedCocktail } from "../../models"
 import CocktailPreviewCard from "./CocktailPreviewCard"
 
 const TrendingCocktails = () => {

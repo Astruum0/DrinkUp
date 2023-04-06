@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import vodka from "../../assets/products/vodka.png"
 import bailey from "../../assets/products/bailey.png"
 import rhum from "../../assets/products/rhum.png"

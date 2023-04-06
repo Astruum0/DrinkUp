@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { ICocktail, IIngredient, IRecipe } from "../../models";
 import { createCocktail } from "../../api/createCocktail";
-import { getAllIngredients } from "../../api/getAllIngredients";
 import { useApi } from "../../api/useApi";
 
 function CocktailForm() {

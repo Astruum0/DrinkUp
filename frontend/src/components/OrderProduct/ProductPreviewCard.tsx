@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../../models"
+import { IFullyDetailedCocktail, IIngredient } from "../../models"
 import "../../styles/home.css"
 import "../../styles/cocktailCard.css"
 import { faCheck, faStar as faSolidStar } from "@fortawesome/free-solid-svg-icons"
