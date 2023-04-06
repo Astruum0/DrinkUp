@@ -2,7 +2,15 @@ import { CocktailIngredient } from 'src/Types/cocktailIngredient';
 import { randomUUID } from 'crypto';
 import { Cocktail } from '../Schemas/cocktail.schema';
 import { CreateCocktailDto } from './../Dto/create-cocktail.dto';
-import { Controller, Get, Post, Param, Delete, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Param,
+  Delete,
+  Body,
+  Patch,
+} from '@nestjs/common';
 import { CocktailsService } from 'src/Services/cocktail.service';
 import { IngredientsService } from 'src/Services/ingredient.service';
 import { Ingredient } from 'src/Schemas/ingredient.schema';
@@ -13,6 +21,7 @@ import {
   ApiBody,
 } from '@nestjs/swagger';
 import { ingredientsListDto } from 'src/Dto/ingredients-list.dto';
+import { UpdateCocktailDto } from 'src/Dto/update-cocktail.dto';
 
 @ApiTags('Cocktails')
 @Controller('cocktails')
@@ -129,5 +138,15 @@ export class CocktailsController {
   })
   remove(@Param('id') id: string) {
     return this.cocktailService.delete(id);
+  }
+
+  @Patch(':id')
+  @ApiResponse({
+    status: 200,
+    description: 'Modifies given fields of given cocktail.',
+    type: Cocktail,
+  })
+  updateCocktail(@Param('id') id: string, @Body() post: UpdateCocktailDto) {
+    return this.cocktailService.updateCocktail(id, post);
   }
 }
