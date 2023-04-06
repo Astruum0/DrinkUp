@@ -2,19 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../../models"
 import "../../styles/home.css"
 import "../../styles/cocktailCard.css"
-import { faCheck, faStar as faSolidStar, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faCheck, faStar as faSolidStar } from "@fortawesome/free-solid-svg-icons"
 import { faStar as faRegularStar, faStarHalfStroke} from "@fortawesome/free-regular-svg-icons"
-// import CocktailDetail from '../CocktailDisplay/CocktailDisplay'
-import { Link } from "react-router-dom"
 
-interface CocktailPreviewCardProps {
-    cocktail: IFullyDetailedCocktail, 
-    fullyDetailed?: boolean, 
-    ownedIngredients?: IIngredient[]
-    onDelete?: any,
-}
 
-const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients, onDelete}: CocktailPreviewCardProps) => {
+const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients}: {cocktail: IFullyDetailedCocktail, fullyDetailed?: boolean, ownedIngredients?: IIngredient[]}) => {
     const { rating, ratingsNb } = cocktail
     const average = (rating && ratingsNb && ratingsNb > 0) ? (rating / ratingsNb) / 2 : undefined
 
@@ -31,7 +23,7 @@ const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients, onDelet
 
     return (
         <div className="cocktail-preview-card">
-            <img className="cocktail-image-preview" src={`${process.env.REACT_APP_API_URL}/images/get?id=${cocktail.picture}`}></img>
+            <img className="cocktail-image-preview" src={`${process.env.REACT_APP_API_URL}/images/get?id=${cocktail.id}`}></img>
             <h3>{cocktail.name}</h3>
             {fullyDetailed && <>
                 <p className="description">{cocktail.description ? cocktail.description : "Aucune description"}</p>
@@ -68,7 +60,7 @@ const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients, onDelet
                     : <span>Aucune notes</span>
                     }
                 </div>
-                {onDelete && <button className="btn btn-error" onClick={onDelete}>Supprimer <FontAwesomeIcon icon={faTrash}/> </button>}
+                {/* <button className="btn btn-filled">Détails</button> */}
             </div>
         </div>
     )

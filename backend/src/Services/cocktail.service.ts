@@ -1,8 +1,9 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Cocktail, CocktailDocument } from '../Schemas/cocktail.schema';
 import { ingredientsListDto } from 'src/Dto/ingredients-list.dto';
+import { UpdateCocktailDto } from 'src/Dto/update-cocktail.dto';
 
 @Injectable()
 export class CocktailsService {
@@ -22,6 +23,10 @@ export class CocktailsService {
 
   async findOne(id: string): Promise<Cocktail> {
     return this.cocktailModel.findOne({ id: id }).exec();
+  }
+
+  async delete(id: string) {
+    return this.cocktailModel.deleteOne({ id: id }).exec();
   }
 
   async findDoableCocktails(
@@ -54,5 +59,19 @@ export class CocktailsService {
       doable,
       partially,
     };
+  }
+
+  async updateCocktail(id: string, post: UpdateCocktailDto) {
+    const cocktail = await this.cocktailModel
+      .findOneAndUpdate({ id: id }, post, { new: true })
+      .populate('name')
+      .populate('picture')
+      .populate('ingredients')
+      .populate('rating')
+      .populate('description');
+    if (!cocktail) {
+      throw new NotFoundException();
+    }
+    return cocktail;
   }
 }
