@@ -15,7 +15,7 @@ function OrderPage() {
         ></img>
         <h1>Rhum</h1>
         <p className="description">Alcool</p>
-        <Link to="rhum">Commander</Link>
+        <Link className="btn" to="rhum">Commander</Link>
       </div>
 
       <div className="product-preview-card">
@@ -26,7 +26,7 @@ function OrderPage() {
         ></img>
         <h1>Vodka</h1>
         <p className="description">Alcool</p>
-        <Link to="vodka">Commander</Link>
+        <Link className="btn" to="vodka">Commander</Link>
       </div>
 
       <div className="product-preview-card">
@@ -37,7 +37,7 @@ function OrderPage() {
         ></img>
         <h1>Bailey</h1>
         <p className="description">Alcool</p>
-        <Link to="bailey">Commander</Link>
+        <Link className="btn" to="bailey">Commander</Link>
       </div>
     </div>
   );
