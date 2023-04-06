@@ -24,6 +24,10 @@ export class CocktailsService {
     return this.cocktailModel.findOne({ id: id }).exec();
   }
 
+  async delete(id: string) {
+    return this.cocktailModel.deleteOne({ id: id }).exec();
+  }
+
   async findDoableCocktails(
     ingredientsList: ingredientsListDto,
   ): Promise<{ doable: Cocktail[]; partially: Cocktail[] }> {

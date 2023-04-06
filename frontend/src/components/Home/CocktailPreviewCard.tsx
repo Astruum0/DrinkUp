@@ -4,6 +4,8 @@ import "../../styles/home.css"
 import "../../styles/cocktailCard.css"
 import { faCheck, faStar as faSolidStar } from "@fortawesome/free-solid-svg-icons"
 import { faStar as faRegularStar, faStarHalfStroke} from "@fortawesome/free-regular-svg-icons"
+// import CocktailDetail from '../CocktailDisplay/CocktailDisplay'
+import { Link } from "react-router-dom"
 
 
 const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients}: {cocktail: IFullyDetailedCocktail, fullyDetailed?: boolean, ownedIngredients?: IIngredient[]}) => {
