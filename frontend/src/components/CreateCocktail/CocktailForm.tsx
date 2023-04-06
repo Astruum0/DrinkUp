@@ -98,6 +98,7 @@ function CocktailForm() {
       const res = await createCocktail(values)
       if (res) {
         setValues(initialState)
+        window.location.reload()
       }
     } catch(err) {
       console.log(err);
@@ -167,7 +168,7 @@ function CocktailForm() {
           required
           />
       <label htmlFor="file" className="btn image-input">Ajouter une image</label>
-      <input type="file" accept="image/*" id="file" onChange={onImageChange}/>
+      <input type="file" accept="image/*" id="file" onChange={onImageChange} />
       {imageUrl && <img className="cocktail-image" src={imageUrl}/>}
       <button disabled={values.name.trim() === "" || values.ingredients.length === 0}  onClick={onSubmit} className="btn btn-filled create-btn">Créer</button>
     </div>

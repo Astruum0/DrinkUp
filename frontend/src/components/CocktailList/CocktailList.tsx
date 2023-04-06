@@ -5,7 +5,7 @@ import CocktailPreviewCard from "../CocktailPreviewCard"
 
 const CocktailList = () => {
     let [trendingCocktails, setTrendingCocktails] = useState<IFullyDetailedCocktail[]>([])
-    const cocktailsState = useApi(`${process.env.REACT_APP_API_URL}/cocktails/`) 
+    const cocktailsState = useApi(`${process.env.REACT_APP_API_URL}/cocktails/trending`) 
     useEffect(() => {
         if (cocktailsState.error) console.error(cocktailsState.error)
         else setTrendingCocktails(cocktailsState.data)

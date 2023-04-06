@@ -32,7 +32,6 @@ const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients, onDelet
             <img className="cocktail-image-preview" src={`${process.env.REACT_APP_API_URL}/images/get?id=${cocktail.picture}`}></img>
             <h3>{cocktail.name}</h3>
             {fullyDetailed && <>
-                <p className="description">{cocktail.description ? cocktail.description : "Aucune description"}</p>
                 <ul className="recipe">
                 {
                     cocktail.ingredients.filter(r => ownedIngredients?.map(i => i.id).includes(r.ingredient.id)).map(r => {
@@ -44,6 +43,7 @@ const CocktailPreviewCard = ({cocktail, fullyDetailed, ownedIngredients, onDelet
                         return <li key={r.ingredient.id}>– {r.ingredient.name} {r.quantity ? `(${r.quantity})` : ""}</li>
                     })
                 }
+                <p className="description">{cocktail.description ? cocktail.description : "Aucune description"}</p>
             </ul>
                 </>
             }
