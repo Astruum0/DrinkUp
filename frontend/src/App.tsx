@@ -13,6 +13,8 @@ import CocktailList from "./components/CocktailList/CocktailList";
 import LoginForm from "./components/Authentification/LoginForm";
 import { useState } from "react";
 import AdminPanel from "./components/Admin/AdminPanel";
+// import CocktailDetail from "./components/CocktailDetail/CocktailDetail";
+import CocktailDetail from "./components/CocktailDisplay/CocktailDisplay";
 
 function App() {
   const [token, setToken] = useState("");
@@ -25,6 +27,7 @@ function App() {
         <Route path="/search" element={<SearchWithIngredients />} />
         <Route path="/new" element={<CocktailForm />} />
         <Route path="/cocktails" element={<CocktailList />} />
+        <Route path="/cocktailDetail/:id" element={<CocktailDetail />} />
 
         <Route path="/login" element={<LoginForm setToken={setToken} />} />
         <Route

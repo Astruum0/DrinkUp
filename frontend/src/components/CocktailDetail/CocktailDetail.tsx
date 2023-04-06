@@ -1,15 +1,9 @@
 import "../../App.css";
 import "../../styles/cocktailDetail.css";
-import { IFullyDetailedCocktail, IIngredient } from "../../models";
+import { IFullyDetailedCocktail } from "../../models";
 import { useParams } from "react-router-dom";
 
-function CocktailDetail({
-  cocktail,
-  ownedIngredients,
-}: {
-  cocktail: IFullyDetailedCocktail;
-  ownedIngredients?: IIngredient[];
-}) {
+function CocktailDetail({ cocktail }: { cocktail: IFullyDetailedCocktail }) {
   var cocktailId = useParams();
   return (
     <>
