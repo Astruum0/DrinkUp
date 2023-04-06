@@ -16,6 +16,7 @@ function Navbar({token, setToken}:NavbarProps) {
         <Link to="search" className={location.pathname === "/search" ? "selected" : ""}>Rechercher</Link>
         <Link to="cocktails" className={location.pathname === "/cocktails" ? "selected" : ""}>Les cocktails</Link>
         <Link to="order" className={location.pathname === "/order" ? "selected" : ""}>Commander</Link>
+        <Link to="new" className={location.pathname === "/new" ? "selected" : ""}>Créer</Link>
         {token ? <Link to="admin" className="btn">Admin</Link> : <Link to="login" className="btn">Connexion</Link>}
         {token ? <button className="btn" onClick={() => setToken("")}>Deconnexion</button> : <></>}
     </div>

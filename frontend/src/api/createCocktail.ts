@@ -35,7 +35,7 @@ export const createCocktail = async (cocktail: ICocktail) => {
             })
         }
 
-        return res
+        return true
     } catch(err) {
         console.log(err);
         throw new Error("An error occured")

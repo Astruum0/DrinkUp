@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { IFullyDetailedCocktail } from "../../models"
 import { useApi } from "../../api/useApi"
 import CocktailPreviewCard from "../Home/CocktailPreviewCard"
+import { deleteCocktail } from "../../api/deleteCocktail"
 
 interface NavbarProps {
     token: string,
@@ -14,11 +15,17 @@ const AdminPanel = ({token, setToken}:NavbarProps) => {
     useEffect(() => {
         if (cocktailsState.error) console.error(cocktailsState.error)
         else setAllCocktails(cocktailsState.data)
-    })
+    }, [cocktailsState])
 
-    const deleteCocktail = async (cocktailId: string) => {
-        console.log(cocktailId);
-        
+    const onDeleteCocktail = async (cocktail: IFullyDetailedCocktail) => {
+        try {
+            let res = await deleteCocktail(cocktail)
+            if (res) {       
+                setAllCocktails(allCocktails.filter(c => c.id !== cocktail.id))
+            }
+        } catch(err) {
+            console.log(err)
+        }
     }
 
     return (
@@ -26,7 +33,7 @@ const AdminPanel = ({token, setToken}:NavbarProps) => {
             <h1>Gérer les cocktails</h1>
             <div className="cocktails-list">
                 {allCocktails.map((cocktail) => {
-                    return <CocktailPreviewCard key={cocktail.id} cocktail={cocktail} fullyDetailed onDelete={() => deleteCocktail(cocktail.id as string)}/>
+                    return <CocktailPreviewCard key={cocktail.id} cocktail={cocktail} fullyDetailed onDelete={() => onDeleteCocktail(cocktail)}/>
                 })
                 }
             </div>

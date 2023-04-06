@@ -163,3 +163,13 @@ input:focus {
 .show {
     opacity: 1;
 }
+
+button:disabled,
+button[disabled] {
+    opacity: 0.5;
+}
+button:disabled:hover,
+button[disabled]:hover {
+    color: var(--background-color);
+    cursor:auto;
+}
