@@ -93,8 +93,6 @@ function CocktailForm() {
   }
 
   const onSubmit = async () => {
-    console.log("clicked");
-    
     if (values.name.trim() === "" || values.ingredients.length === 0) return
     try {
       const res = await createCocktail(values)
@@ -115,7 +113,9 @@ function CocktailForm() {
           type='text'
           placeholder='Titre'
           onChange={onChange}
+          value={values.name}
           required
+          autoComplete="off"
           />
       <div className="add-ingredient">
         <div className="dropdown">
@@ -127,6 +127,7 @@ function CocktailForm() {
             value={newIngredient.ingredient}
             onChange={onChangeIngredient}
             onFocus={() => setShowAutoComplete(true)}
+            autoComplete="off"
           />
           <div className="dropdown-options">
             { showAutoComplete && autoCompleteIngredients.map((ingredient, i) => {
@@ -143,6 +144,7 @@ function CocktailForm() {
           placeholder='Ajouter quantité'
           value={newIngredient.quantity}
           onChange={onChangeIngredient}
+          autoComplete="off"
         />
         <button className="btn btn-filled add-ingredient-btn" onClick={addIngredient}>+</button>
       </div>
@@ -161,6 +163,7 @@ function CocktailForm() {
           id='description'
           placeholder='Description'
           onChange={onChange}
+          value={values.description}
           required
           />
       <label htmlFor="file" className="btn image-input">Ajouter une image</label>

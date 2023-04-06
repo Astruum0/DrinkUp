@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { IFullyDetailedCocktail } from "../../models"
 import { useApi } from "../../api/useApi"
-import CocktailPreviewCard from "../Home/CocktailPreviewCard"
+import CocktailPreviewCard from "../CocktailPreviewCard"
 import { deleteCocktail } from "../../api/deleteCocktail"
 
 interface NavbarProps {

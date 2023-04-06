@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../../models"
-import "../../styles/home.css"
-import "../../styles/cocktailCard.css"
+import { ICocktail, IFullyDetailedCocktail, IIngredient } from "../models"
+import "../styles/home.css"
+import "../styles/cocktailCard.css"
 import { faCheck, faStar as faSolidStar, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { faStar as faRegularStar, faStarHalfStroke} from "@fortawesome/free-regular-svg-icons"
 

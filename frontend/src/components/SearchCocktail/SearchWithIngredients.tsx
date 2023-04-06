@@ -6,7 +6,7 @@ import "../../styles/search.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { getCocktailsFromSearch } from "../../api/searchCocktailApi"
-import CocktailPreviewCard from "../Home/CocktailPreviewCard"
+import CocktailPreviewCard from "../CocktailPreviewCard"
 import { Link } from "react-router-dom"
 
 const SearchWithIngredients = () => {
