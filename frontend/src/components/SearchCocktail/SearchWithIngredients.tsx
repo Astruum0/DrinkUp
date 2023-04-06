@@ -91,6 +91,7 @@ const SearchWithIngredients = () => {
                         value={searchField}
                         onChange={onChangeIngredient}
                         onFocus={() => setShowAutoComplete(true)}
+                        autoComplete="off"
                     />
                     <div className="dropdown-options">
                         { showAutoComplete && autoCompleteIngredients.map((ingredient, i) => {

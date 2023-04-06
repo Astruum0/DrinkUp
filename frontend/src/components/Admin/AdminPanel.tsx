@@ -29,7 +29,7 @@ const AdminPanel = ({token, setToken}:NavbarProps) => {
     }
 
     return (
-        <div>
+        <div className="home-container">
             <h1>Gérer les cocktails</h1>
             <div className="cocktails-list">
                 {allCocktails.map((cocktail) => {
