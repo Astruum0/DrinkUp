@@ -79,7 +79,7 @@ const SearchWithIngredients = () => {
 
     return (<>
         <div className="search-cocktail">
-            <h1>Rechercher un cocktails</h1>
+            <h1>Rechercher un cocktail</h1>
             <div className="add-ingredient">
                 <div className="dropdown">
                     <input 
