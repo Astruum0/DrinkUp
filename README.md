@@ -4,7 +4,15 @@
 
 ## Installation et lancement
 
-### Backend
+### Mise en place de la Database
+
+Installez MongoDB [ici](https://www.mongodb.com/docs/manual/installation/)
+vous pouvez ensuite executer cette commande dans le dossier root de Drink'Up
+```
+mongorestore -d drinkup db/drinkup
+```
+
+### Lancement du backend
 
 ```
 cd backend
@@ -12,10 +20,14 @@ npm i
 npm start
 ```
 
-### Frontend
+### Lancement du frontend
 
 ```
 cd frontend
 npm i
 npm start
 ```
+
+### Swagger
+
+Vous pouvez acceder au swagger de l'api à cette adresse `http://localhost:3001/api`
